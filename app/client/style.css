@@ -2,3 +2,8 @@
   background: url('images/beach-back.png') no-repeat center center fixed;
   background-size: cover;
 }
+
+.geostudy-map-back {
+  background: #36393f;
+  padding: 15px;
+}
