@@ -2,3 +2,11 @@
   background: url('images/beach-back.png') no-repeat center center fixed;
   background-size: cover;
 }
+
+.spots-text {
+  color: white;
+}
+
+.spots-subtext {
+  color: #B9BBBE;
+}
