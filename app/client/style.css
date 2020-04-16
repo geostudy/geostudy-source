@@ -1,4 +1,16 @@
-.digits-landing-back {
-  background: url('images/beach-back.png') no-repeat center center fixed;
+landing-back {
+  background: url('images/landing-background.png') no-repeat center center fixed;
   background-size: cover;
+}
+
+landing-background {
+  background: #36393f !important;
+}
+
+landing-text {
+  color: #fff !important;
+}
+
+landing-header {
+  color: #fff;
 }
