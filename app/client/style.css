@@ -3,6 +3,7 @@
   background-size: cover;
 }
 
+<<<<<<< HEAD
 .geostudy-map-back {
   background: #36393f;
   padding: 15px;
@@ -14,4 +15,16 @@
 
 .spots-subtext {
   color: #B9BBBE;
+=======
+.landing-background {
+  background: #36393f !important;
+}
+
+.landing-text {
+  color: #fff !important;
+}
+
+.landing-header {
+  color: #fff;
+>>>>>>> issue-03
 }
