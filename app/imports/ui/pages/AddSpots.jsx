@@ -16,7 +16,7 @@ const formSchema = new SimpleSchema({
 });
 
 /** Renders the Page for adding a document. */
-class AddSpot extends React.Component {
+class AddSpots extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
@@ -56,4 +56,4 @@ class AddSpot extends React.Component {
   }
 }
 
-export default AddSpot;
+export default AddSpots;
