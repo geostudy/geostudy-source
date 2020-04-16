@@ -1,37 +1,38 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
-import swal from 'sweetalert';
-import { Meteor } from 'meteor/meteor';
+import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField, RadioField } from 'uniforms-semantic';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import SimpleSchema from 'simpl-schema';
-import { Spots } from '../../api/spot/Spots';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
   name: String,
-  address: String,
-  image: String,
+  latitude: String,
+  longitude: String,
   description: String,
+  rating: {
+    type: Number,
+    allowedValues: [1, 2, 3, 4, 5],
+  },
 });
 
 /** Renders the Page for adding a document. */
 class AddSpots extends React.Component {
 
   /** On submit, insert the data. */
-  submit(data, formRef) {
-    const { name, address, image, description } = data;
-    const owner = Meteor.user().username;
-    Spots.insert({ name, address, image, description, owner },
-      (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'Item added successfully', 'success');
-          formRef.reset();
-        }
-      });
-  }
+  // submit(data, formRef) {
+  //   const { name, latitude, longitude, description, rating } = data;
+  //   const owner = Meteor.user().username;
+  //   Spots.insert({ name, latitude, longitude, description, rating },
+  //     (error) => {
+  //       if (error) {
+  //         swal('Error', error.message, 'error');
+  //       } else {
+  //         swal('Success', 'Item added successfully', 'success');
+  //         formRef.reset();
+  //       }
+  //     });
+  // }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
@@ -43,9 +44,10 @@ class AddSpots extends React.Component {
             <AutoForm ref={ref => { fRef = ref; }} schema={formSchema} onSubmit={data => this.submit(data, fRef)} >
               <Segment>
                 <TextField name='name'/>
-                <TextField name='address'/>
-                <TextField name='image'/>
+                <TextField name='latitude'/>
+                <TextField name='longitude'/>
                 <LongTextField name='description'/>
+                <RadioField name='rating' inline/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
               </Segment>
