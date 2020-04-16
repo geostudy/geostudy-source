@@ -8,14 +8,7 @@ class Landing extends React.Component {
     return (
         <div className="landing-background">
           <div className="landing-back">
-            <Grid container verticalAlign='middle' centered rows={2}>
-              <Grid.Row>
-                <Container>
-                  <div className="landing-header">
-                    <Header as='h3' inverted>OOGA BOOGA BIG TEXT</Header>
-                  </div>
-                </Container>
-              </Grid.Row>
+            <Grid container verticalAlign='middle' centered rows={1}>
                 <Grid.Row>
                   <div>
                     <Header size="huge" as='h2' icon textAlign='center' inverted>
