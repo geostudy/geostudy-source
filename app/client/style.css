@@ -1,9 +1,3 @@
-.digits-landing-back {
-  background: url('images/beach-back.png') no-repeat center center fixed;
-  background-size: cover;
-}
-
-<<<<<<< HEAD
 .geostudy-map-back {
   background: #36393f;
   padding: 15px;
@@ -15,7 +9,8 @@
 
 .spots-subtext {
   color: #B9BBBE;
-=======
+}
+
 .landing-background {
   background: #36393f !important;
 }
@@ -26,5 +21,4 @@
 
 .landing-header {
   color: #fff;
->>>>>>> issue-03
 }
