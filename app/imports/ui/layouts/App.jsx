@@ -10,6 +10,7 @@ import Landing from '../pages/Landing';
 import ListContacts from '../pages/ListContacts';
 import ListContactsAdmin from '../pages/ListContactsAdmin';
 import AddSpots from '../pages/AddSpots';
+import EditSpot from '../pages/EditSpot';
 import EditContact from '../pages/EditContact';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
@@ -32,7 +33,7 @@ class App extends React.Component {
               <ProtectedRoute path="/list" component={ListContacts}/>
               <ProtectedRoute path="/spots" component={Spots}/>
               <ProtectedRoute path="/add" component={AddSpots}/>
-
+              <ProtectedRoute path="/edit" component={EditSpot}/>
               <ProtectedRoute path="/edit/:_id" component={EditContact}/>
               <AdminProtectedRoute path="/admin" component={ListContactsAdmin}/>
               <ProtectedRoute path="/signout" component={Signout}/>
