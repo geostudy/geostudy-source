@@ -16,7 +16,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import Map from '../pages/Map';
-
+import Spots from '../pages/Spots';
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
   render() {
@@ -30,6 +30,7 @@ class App extends React.Component {
               <Route path="/signup" component={Signup}/>
               <Route path="/map" component={Map}/>
               <ProtectedRoute path="/list" component={ListContacts}/>
+              <ProtectedRoute path="/spots" component={Spots}/>
               <ProtectedRoute path="/add" component={AddContact}/>
               <ProtectedRoute path="/edit/:_id" component={EditContact}/>
               <AdminProtectedRoute path="/admin" component={ListContactsAdmin}/>
