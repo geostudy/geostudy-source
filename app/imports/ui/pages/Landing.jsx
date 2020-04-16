@@ -12,7 +12,7 @@ class Landing extends React.Component {
               <Grid.Row>
                 <Container>
                   <div className="landing-header">
-                    <p>I had something here but now I do not like it</p>
+                    <Header as='h3' inverted>OOGA BOOGA BIG TEXT</Header>
                   </div>
                 </Container>
               </Grid.Row>
@@ -71,7 +71,7 @@ class Landing extends React.Component {
                   <Grid.Row>
                     <Grid.Column>
                       <div className="landing-text">
-                        <Header as='h4' inverted>Find a study spot you like?  Leave it a good rating.</Header>
+                        <Header as='h2' inverted>Find a study spot you like?  Leave it a good rating.</Header>
                         <Header as='h4' inverted>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                           labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                           laboris nisi ut aliquip ex ea commodo consequat.</Header>
