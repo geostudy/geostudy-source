@@ -37,9 +37,8 @@ class Landing extends React.Component {
                     <Grid.Column>
                       <div className="landing-text">
                         <Header as='h2' inverted>Create an account to post new study spots.</Header>
-                        <Header as='h4' inverted>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                          laboris nisi ut aliquip ex ea commodo consequat.</Header>
+                        <Header as='h4' inverted>Creating an account will give you access to the many features of this
+                          website. If you already have an account, please click the login button above.</Header>
                       </div>
                     </Grid.Column>
                     <Grid.Column>
@@ -54,9 +53,9 @@ class Landing extends React.Component {
                     <Grid.Column>
                       <div className="landing-text" >
                         <Header as='h2' inverted>Discover new study spots!</Header>
-                        <Header as='h4' inverted>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                          laboris nisi ut aliquip ex ea commodo consequat.</Header>
+                        <Header as='h4' inverted>Login to find new study spots all across UH Manoa! You can find the
+                          spots by either going to the Spots page, or taking a look at the Maps page to see all of
+                          UH Manoa.</Header>
                       </div>
                     </Grid.Column>
                   </Grid.Row>
@@ -65,9 +64,9 @@ class Landing extends React.Component {
                     <Grid.Column>
                       <div className="landing-text">
                         <Header as='h2' inverted>Find a study spot you like?  Leave it a good rating.</Header>
-                        <Header as='h4' inverted>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                          laboris nisi ut aliquip ex ea commodo consequat.</Header>
+                        <Header as='h4' inverted>Each spot will have a rating attached to it. This can tell you what to
+                        expect from the given spot. If you want to be heard as well, feel free to give a spot a rating.
+                        </Header>
                       </div>
                     </Grid.Column>
                     <Grid.Column>
