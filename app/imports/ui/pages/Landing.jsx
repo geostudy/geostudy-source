@@ -17,11 +17,11 @@ class Landing extends React.Component {
                       </div>
                     </Header>
                     <Segment padded inverted>
-                      <Button color='white' fluid inverted>
+                      <Button fluid inverted>
                         Login
                       </Button>
                       <Divider horizontal inverted>Or</Divider>
-                      <Button color='white' fluid inverted>
+                      <Button fluid inverted>
                         Create Account
                       </Button>
                     </Segment>
