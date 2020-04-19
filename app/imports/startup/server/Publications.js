@@ -1,13 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Contacts } from '../../api/contact/Contacts';
+import { Spots } from '../../api/spot/Spots';
 import { Notes } from '../../api/note/Notes';
 
 /** This subscription publishes only the documents associated with the logged in user */
-Meteor.publish('Contacts', function publish() {
+Meteor.publish('Spots', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
-    return Contacts.find({ owner: username });
+    return Spots.find({ owner: username });
   }
   return this.ready();
 });
@@ -28,3 +29,4 @@ Meteor.publish('Notes', function publish() {
   }
   return this.ready();
 });
+//
