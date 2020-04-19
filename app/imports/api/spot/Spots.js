@@ -11,7 +11,7 @@ const SpotsSchema = new SimpleSchema({
   name: String,
   location: String,
   description: String,
-  rating: String,
+  rating: Number,
   owner: String,
 }, { tracker: Tracker });
 

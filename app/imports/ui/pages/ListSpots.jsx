@@ -40,6 +40,6 @@ export default withTracker(() => {
   const subscription = Meteor.subscribe('Spots');
   return {
     spots: Spots.find({}).fetch(),
-    ready: subscription.ready().ready(),
+    ready: subscription.ready(),
   };
 })(ListSpots);

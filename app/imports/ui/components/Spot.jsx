@@ -47,7 +47,7 @@ class Spot extends React.Component {
 Spot.propTypes = {
   Spots: PropTypes.object.isRequired,
   spot: PropTypes.object.isRequired,
-  currentUser: PropTypes.string.isRequired,
+  currentUser: PropTypes.string,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
