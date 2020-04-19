@@ -40,6 +40,7 @@ class SpotsAdmin extends React.Component {
                   </Item.Extra>
                   <Item.Extra>
                     <button className="ui button" position="left">Edit</button>
+                    <button className="ui button">Delete</button>
                   </Item.Extra>
                 </Item.Content>
               </Item>
@@ -66,6 +67,7 @@ class SpotsAdmin extends React.Component {
                   </Item.Extra>
                   <Item.Extra>
                     <button className="ui button">Edit</button>
+                    <button className="ui button">Delete</button>
                   </Item.Extra>
                 </Item.Content>
               </Item>
