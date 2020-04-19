@@ -47,7 +47,7 @@ class AddSpots extends React.Component {
                 <TextField name='latitude'/>
                 <TextField name='longitude'/>
                 <LongTextField name='description'/>
-                <RadioField name='rating' inline/>
+                <RadioField name='rating' inline='true'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
               </Segment>
