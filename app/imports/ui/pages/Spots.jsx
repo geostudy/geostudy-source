@@ -1,71 +1,45 @@
 import React from 'react';
-import { Item, Icon } from 'semantic-ui-react';
+import { Meteor } from 'meteor/meteor';
+import { Item, Header, Loader } from 'semantic-ui-react';
+import Spot from '/imports/ui/components/Spot';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+import { Spots } from '../../api/spot/Spots';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class Spots extends React.Component {
+class ListSpots extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return this.renderPage();
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-        <div
-            style={{
-              backgroundColor: '#36393f',
-              padding: 15,
-            }}
-        >
+        <div>
+          <Header as="h2" textAlign="center" inverted>Spots</Header>
             <Item.Group>
-              <Item>
-                <Item.Image src='https://i.imgur.com/eBL8AET.jpg'/>
-
-                <Item.Content>
-                  <Item.Header as='h3'><p className='spots-text'>Library</p></Item.Header>
-                  <Item.Meta><p className='spots-subtext'>Latitude: 40.785091</p></Item.Meta>
-                  <Item.Meta><p className='spots-subtext'>Longitude: -73.968285</p></Item.Meta>
-                  <Item.Description>
-                    <p className='spots-text'>
-                      Lots of Resources
-                    </p>
-                  </Item.Description>
-                  <Item.Extra>
-                    <Icon color='yellow' name='star'/>
-                    <Icon color='yellow' name='star'/>
-                    <Icon color='yellow' name='star'/>
-                    <Icon color='yellow' name='star'/>
-                    <Icon name='star'/>
-                  </Item.Extra>
-                </Item.Content>
-              </Item>
-
-              <Item>
-                <Item.Image src='https://i.imgur.com/tURqjqu.jpg'/>
-
-                <Item.Content>
-                  <Item.Header as='h3'><p className='spots-text'>Staircase</p></Item.Header>
-                  <Item.Meta><p className='spots-subtext'>Latitude: 40.785091</p></Item.Meta>
-                  <Item.Meta><p className='spots-subtext'>Longitude: -73.968285</p></Item.Meta>
-                  <Item.Description>
-                    <p className='spots-text'>
-                      Sunny, open air, background noise
-                    </p>
-                  </Item.Description>
-                  <Item.Extra>
-                    <Icon color='yellow' name='star'/>
-                    <Icon color='yellow' name='star'/>
-                    <Icon name='star'/>
-                    <Icon name='star'/>
-                    <Icon name='star'/>
-                  </Item.Extra>
-                </Item.Content>
-              </Item>
+              {this.props.spots.map((spot, index) => <Spot key={index} Spots={Spots}
+                spot={{ spot }}/>)}
             </Item.Group>
         </div>
     );
   }
 }
 
-export default Spots;
+/** Require an array of Stuff documents in the props. */
+ListSpots.propTypes = {
+  spots: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  // Get access to Stuff documents.
+  const subscription = Meteor.subscribe('Spots');
+  return {
+    spots: Spots.find({}).fetch(),
+    ready: subscription.ready().ready(),
+  };
+})(ListSpots);
