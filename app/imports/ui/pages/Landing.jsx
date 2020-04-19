@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Meteor } from 'meteor/meteor';
-import { withTracker } from 'meteor/react-meteor-data';
-import { withRouter, NavLink } from 'react-router-dom';
-import { Grid, Header, Button, Divider, Container, Segment, Image, TextArea, Menu } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
+import { Grid, Header, Divider, Segment, Image, Button } from 'semantic-ui-react';
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
@@ -46,14 +44,11 @@ class Landing extends React.Component {
                       </div>
                     </Grid.Column>
                     <Grid.Column>
-                      <Image src="/images/temp-picture.png" rounded size="medium"/>
+                      <Image src="/images/manoa-building.jpg" rounded size="medium"/>
                     </Grid.Column>
                   </Grid.Row>
-                  <Divider/>
+                  <Divider inverted/>
                   <Grid.Row>
-                    <Grid.Column>
-                      <Image src="/images/temp-picture.png" rounded size="medium"/>
-                    </Grid.Column>
                     <Grid.Column>
                       <div className="landing-text">
                         <Header as='h2' inverted>Discover new study spots!</Header>
@@ -62,8 +57,11 @@ class Landing extends React.Component {
                           UH Manoa.</Header>
                       </div>
                     </Grid.Column>
+                    <Grid.Column>
+                      <Image src="/images/manoa-qlc.jpg" rounded size="medium"/>
+                    </Grid.Column>
                   </Grid.Row>
-                  <Divider/>
+                  <Divider inverted/>
                   <Grid.Row>
                     <Grid.Column>
                       <div className="landing-text">
@@ -75,7 +73,7 @@ class Landing extends React.Component {
                       </div>
                     </Grid.Column>
                     <Grid.Column>
-                      <Image src="/images/temp-picture.png" rounded size="medium"/>
+                      <Image src="/images/manoa-front.jpg" rounded size="medium"/>
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
