@@ -8,3 +8,4 @@ Meteor.publish('Spots', function publish() {
   }
   return this.ready();
 });
+//
