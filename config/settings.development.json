@@ -64,6 +64,7 @@
   ],
   "defaultSpots": [
     {
+      "image": "https://i.imgur.com/eBL8AET.jpg",
       "name": "Library",
       "location": "2550 McCarthy Mall, Honolulu, HI 96822",
       "description": "Quiet, lots of resources, indoors, air conditioning",
@@ -71,6 +72,7 @@
       "owner": "john@foo.com"
     },
     {
+      "image": "https://i.imgur.com/tURqjqu.jpg",
       "name": "Campus Center Stairwell",
       "location": "2465 Campus Rd, Honolulu, HI 96822",
       "description": "Background noise, outdoors, sunny",

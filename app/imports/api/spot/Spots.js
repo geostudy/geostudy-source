@@ -7,10 +7,11 @@ const Spots = new Mongo.Collection('Spots');
 
 /** Define a schema to specify the structure of each document in the collection. */
 const SpotsSchema = new SimpleSchema({
+  image: String,
   name: String,
   location: String,
   description: String,
-  rating: String,
+  rating: Number,
   owner: String,
 }, { tracker: Tracker });
 
