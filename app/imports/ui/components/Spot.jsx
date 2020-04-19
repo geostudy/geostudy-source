@@ -38,8 +38,8 @@ class Spot extends React.Component {
     );
   }
 
-  removeItem(contactId) {
-    this.props.Spots.remove(contactId);
+  removeItem(spotId) {
+    this.props.Spots.remove(spotId);
   }
 }
 
