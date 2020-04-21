@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Item, Header, Loader } from 'semantic-ui-react';
+import { Item, Header, Loader, Container } from 'semantic-ui-react';
 import Spot from '/imports/ui/components/Spot';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -17,13 +17,13 @@ class ListSpots extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-        <div>
+        <Container>
           <Header as="h2" textAlign="center" inverted>Spots</Header>
             <Item.Group>
               {this.props.spots.map((spot, index) => <Spot key={index} Spots={Spots}
-                spot={{ spot }}/>)}
+                spot={spot}/>)}
             </Item.Group>
-        </div>
+        </Container>
     );
   }
 }
