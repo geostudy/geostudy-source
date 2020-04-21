@@ -25,6 +25,9 @@ class Spot extends React.Component {
                 Rating: {this.props.spot.rating}
               </p>
             </Item.Extra>
+            <Item.Extra>
+              <Link to={`/edit/${this.props.spot._id}`} className='spots-test'>Edit</Link>
+            </Item.Extra>
           </Item.Content>
         </Item>
     );
