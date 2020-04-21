@@ -28,6 +28,11 @@ class Spot extends React.Component {
             <Item.Extra>
               <Link to={`/edit/${this.props.spot._id}`} className='spots-test'>Edit</Link>
             </Item.Extra>
+            <Item.Extra>
+              {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+                  <Button className="ui button" onClick={() => this.removeItem(this.props.spot._id)}>Delete</Button>
+              ) : ''}
+            </Item.Extra>
           </Item.Content>
         </Item>
     );
