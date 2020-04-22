@@ -11,6 +11,7 @@ import Landing from '../pages/Landing';
 import AddSpots from '../pages/AddSpots';
 import EditSpot from '../pages/EditSpot';
 import NotFound from '../pages/NotFound';
+import Home from '../pages/Home';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
@@ -28,6 +29,7 @@ class App extends React.Component {
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
               <Route path="/map" component={Map}/>
+              <ProtectedRoute path="/home" component={Home}/>
               <ProtectedRoute path="/spots" component={ListSpots}/>
               <ProtectedRoute path="/add" component={AddSpots}/>
               <ProtectedRoute path="/edit" component={EditSpot}/>
