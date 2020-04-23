@@ -1,9 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Grid, Header, Divider, Segment, Image, Button } from 'semantic-ui-react';
+import { Grid, Header, Divider, Image } from 'semantic-ui-react';
 
-/** A simple static component to render some text for the landing page. */
-class Landing extends React.Component {
+/** A simple static component to render some text for the Home page. */
+class Home extends React.Component {
   render() {
     const divStyle = { paddingTop: '50px', paddingBottom: '150px' };
     return (
@@ -13,19 +12,10 @@ class Landing extends React.Component {
               <Grid.Row>
                 <div>
                   <Header size="huge" as='h2' icon textAlign='center' inverted>
-                    <div className="landing-text">
+                    <div className="Home-text">
                       Find your next study spot today, join GEOStudy
                     </div>
                   </Header>
-                  <Segment padded inverted>
-                    <Button as={NavLink} activeClassName="active" exact to="/signin" key='signin' fluid inverted>
-                      Login
-                    </Button>
-                    <Divider horizontal inverted>Or</Divider>
-                    <Button as={NavLink} activeClassName="active" exact to="/signup" key='signup' fluid inverted>
-                      Create Account
-                    </Button>
-                  </Segment>
                 </div>
               </Grid.Row>
             </Grid>
@@ -36,7 +26,7 @@ class Landing extends React.Component {
                 <Grid container verticalAlign='middle' centered columns={2} rows={3}>
                   <Grid.Row>
                     <Grid.Column>
-                      <div className="landing-text">
+                      <div className="Home-text">
                         <Header as='h2' inverted>Create an account to post new study spots.</Header>
                         <Header as='h4' inverted>Creating an account will give you access to the many features of this
                           website. If you already have an account, please click the login button above.</Header>
@@ -49,7 +39,7 @@ class Landing extends React.Component {
                   <Divider inverted/>
                   <Grid.Row>
                     <Grid.Column>
-                      <div className="landing-text">
+                      <div className="Home-text">
                         <Header as='h2' inverted>Discover new study spots!</Header>
                         <Header as='h4' inverted>Login to find new study spots all across UH Manoa! You can find the
                           spots by either going to the Spots page, or taking a look at the Maps page to see all of
@@ -63,7 +53,7 @@ class Landing extends React.Component {
                   <Divider inverted/>
                   <Grid.Row>
                     <Grid.Column>
-                      <div className="landing-text">
+                      <div className="Home-text">
                         <Header as='h2' inverted>Find a study spot you like? Leave it a good rating.</Header>
                         <Header as='h4' inverted>Each spot will have a rating attached to it. This can tell you what to
                           expect from the given spot. If you want to be heard as well, feel free to give a spot a
@@ -85,4 +75,4 @@ class Landing extends React.Component {
   }
 }
 
-export default Landing;
+export default Home;
