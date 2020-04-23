@@ -136,6 +136,30 @@
       "owner": "john@foo.com"
     },
     {
+      "image": "https://media.bizj.us/view/img/10823311/halemahanarendering4*1200xx3840-2160-0-0.jpg",
+      "name": "Starbucks (not on campus)",
+      "location": "2615 S King St, Honolulu, HI 96826",
+      "description": "This starbucks is way better than the campus starbucks because the students walking all the way to this starbucks is trying to get some peace whilst studying. AC is good and tables are present.  ",
+      "rating": "4",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://s3-media1.fl.yelpcdn.com/bphoto/OAuKFTIOFZ-peL70WjJVew/l.jpg",
+      "name": "Ban'an",
+      "location": "1810 University Ave, Honolulu, HI 96822",
+      "description": "Enough tables for group study sessions, AC, good ice cream, and a bus stop right outside. It's walking distance back to campus.  ",
+      "rating": "3",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://i.ytimg.com/vi/d75XNDMqsJQ/maxresdefault.jpg",
+      "name": "Campus Center Second Floor Starbucks",
+      "location": "2465 Campus Rd #220, Honolulu, HI 96822",
+      "description": "There's a lot of pretentious hipsters that think studying here is the greatest thing in the world. The only good thing is that there's a lot of tables, good wind, and obviously, coffee next door. If you're going there to attempt to focus, you're out of luck. ",
+      "rating": "3",
+      "owner": "john@foo.com"
+    },
+    {
       "image": "https://www.staradvertiser.com/wp-content/uploads/2017/01/web1_CTY-UH-Explosion-Report-084.jpg",
       "name": "Post Second Floor",
       "location": "1000 Pope Rd, Honolulu, HI 96822",
@@ -144,10 +168,26 @@
       "owner": "john@foo.com"
     },
     {
+      "image": "https://hawaiiathletics.com/common/controls/image_handler.aspx?thumb_id=0&image_path=/images/2015/7/22/ssc_pano.jpg",
+      "name": "Stan Sheriff Center",
+      "location": "1355 Lower Campus Rd, Honolulu, HI 96822",
+      "description": "Good lighting, good AC, kind of weird though but if you know the faculty and staff they're pretty chill. Go to a bench and study up.",
+      "rating": "3",
+      "owner": "john@foo.com"
+    },
+    {
       "image": "https://upload.wikimedia.org/wikipedia/commons/8/8f/William_S._Richardson_School_of_Law.png",
       "name": "William S. Richardson School of Law",
       "location": "2515 Dole St, Honolulu, HI 96822",
       "description": "They got good lighting but lacking tables. If you find one though it's smooth sailing if you get a long enough extension cord for an outlet.",
+      "rating": "3",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://media.bizj.us/view/img/10823311/halemahanarendering4*1200xx3840-2160-0-0.jpg",
+      "name": "Pieology",
+      "location": "2615 S King St, Honolulu, HI 96826",
+      "description": "A lot of people walking in and out but if you like white noise whilst studying it is a good place to go for lunch or dinner and get your work done.",
       "rating": "3",
       "owner": "john@foo.com"
     },
@@ -164,6 +204,14 @@
       "name": "Music Building",
       "location": "2411 Dole St, Honolulu, HI 96822",
       "description": "Really great if you know around the place, if you have access the music room and storage rooms there's desks with little to no people coming in and out after hours.",
+      "rating": "3",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://www.hawaii.edu/campuscenter/vendors/yummys1.jpg",
+      "name": "Manoa Dining Services",
+      "location": "2465 Campus Rd, Honolulu, HI 96822",
+      "description": "It's a chill spot to study with your friends or if you have down time in between classes. Not great if you're trying to focus. AC is okay. Noise is loud",
       "rating": "3",
       "owner": "john@foo.com"
     },
