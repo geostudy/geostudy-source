@@ -38,7 +38,7 @@
       },
       {
         "image": "https://i.imgur.com/eBL8AET.jpg",
-        "name": " Hamilton Library First Floor",
+        "name": "Hamilton Library First Floor",
         "location": "2550 McCarthy Mall, Honolulu, HI 96822",
         "description": "Quiet, lots of resources, indoors, warm",
         "rating": "4",
@@ -401,6 +401,83 @@
     {
       "tag": "Music",
       "spot": []
+    }
+  ],
+  "ratings": [
+    {
+      "rating": 5,
+      "owner": "john@foo.com",
+      "spot": "Post Third Floor (IC SPACE)"
+    },
+    {
+      "rating": 5,
+      "owner": "admin@foo.com",
+      "spot": "Post Third Floor (IC SPACE)"
+    },
+    {
+      "rating": 5,
+      "owner": "jim@foo.com",
+      "spot": "Post Third Floor (IC SPACE)"
+    },
+    {
+      "rating": 5,
+      "owner": "sam@foo.com",
+      "spot": "Post Third Floor (IC SPACE)"
+    },
+    {
+      "rating": 5,
+      "owner": "bud@foo.com",
+      "spot": "Post Third Floor (IC SPACE)"
+    },
+    {
+      "rating": 5,
+      "owner": "john@foo.com",
+      "spot": "Sinclair First Floor Study Space"
+    },
+    {
+      "rating": 5,
+      "owner": "admin@foo.com",
+      "spot": "Sinclair First Floor Study Space"
+    },
+    {
+      "rating": 1,
+      "owner": "sam@foo.com",
+      "spot": "Sinclair First Floor Study Space"
+    },
+    {
+      "rating": 1,
+      "owner": "bud@foo.com",
+      "spot": "Sinclair First Floor Study Space"
+    },
+    {
+      "rating": 1,
+      "owner": "admin@foo.com",
+      "spot": "Library Second Floor Study Rooms"
+    },
+    {
+      "rating": 2,
+      "owner": "john@foo.com",
+      "spot": "Library Second Floor Study Rooms"
+    },
+    {
+      "rating": 3,
+      "owner": "bud@foo.com",
+      "spot": "Library Second Floor Study Rooms"
+    },
+    {
+      "rating": 2,
+      "owner": "john@foo.com",
+      "spot": "Post First Floor"
+    },
+    {
+      "rating": 4,
+      "owner": "admin@foo.com",
+      "spot": "Post First Floor"
+    },
+    {
+      "rating": 1,
+      "owner": "@foo.com",
+      "spot": "Hamilton Library First Floor"
     }
   ]
 }

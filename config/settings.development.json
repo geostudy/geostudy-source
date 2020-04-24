@@ -8,32 +8,18 @@
     {
       "email": "john@foo.com",
       "password": "changeme"
-    }
-  ],
-  "defaultData": [
-    {
-      "name": "Basket",
-      "quantity": 3,
-      "owner": "john@foo.com",
-      "condition": "excellent"
     },
     {
-      "name": "Bicycle",
-      "quantity": 2,
-      "owner": "john@foo.com",
-      "condition": "poor"
+      "email": "jim@foo.com",
+      "password": "changeme"
     },
     {
-      "name": "Banana",
-      "quantity": 2,
-      "owner": "admin@foo.com",
-      "condition": "good"
+      "email": "sam@foo.com",
+      "password": "changeme"
     },
     {
-      "name": "Boogie Board",
-      "quantity": 2,
-      "owner": "admin@foo.com",
-      "condition": "excellent"
+      "email": "bud@foo.com",
+      "password": "changeme"
     }
   ],
   "defaultContacts": [
