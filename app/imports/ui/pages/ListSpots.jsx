@@ -38,8 +38,9 @@ ListSpots.propTypes = {
 export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('Spots');
+  const subscription2 = Meteor.subscribe('Ratings');
   return {
     spots: Spots.find({}).fetch(),
-    ready: subscription.ready(),
+    ready: (subscription.ready() && subscription2.ready()),
   };
 })(ListSpots);

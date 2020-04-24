@@ -1,4 +1,6 @@
 import { Meteor } from 'meteor/meteor';
+import { check } from 'meteor/check';
+import { _ } from 'meteor/underscore';
 import { Spots } from '../../api/spot/Spots';
 import { Tags } from '../../api/tag/Tags';
 import { Ratings } from '../../api/rating/Ratings';
@@ -21,6 +23,19 @@ Meteor.publish('Tags', function publish() {
 Meteor.publish('Ratings', function publish() {
   if (this.userId) {
     return Ratings.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish('RatingsTotal', function publish(location) {
+  check(location, String);
+  if (this.userId) {
+    const sum = _.map(Ratings.find({ spot: location }));
+    const average = sum / (_.size(Ratings.find({ spot: location })) - 1);
+    if (_.size(Ratings.find({ spot: location })) === 0) {
+      return 0;
+    }
+    return average;
   }
   return this.ready();
 });

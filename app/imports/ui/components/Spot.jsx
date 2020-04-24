@@ -1,9 +1,11 @@
 import React from 'react';
+import { _ } from 'meteor/underscore';
 import { Button, Item } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
+import { Ratings } from '../../api/rating/Ratings';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Spot extends React.Component {
@@ -22,7 +24,7 @@ class Spot extends React.Component {
             </Item.Description>
             <Item.Extra>
               <p className='spots-text'>
-                Rating: {this.props.spot.rating}
+                Rating: {this.props.RatingsTotal}
               </p>
             </Item.Extra>
             <Item.Extra>
@@ -48,6 +50,7 @@ Spot.propTypes = {
   Spots: PropTypes.object.isRequired,
   spot: PropTypes.object.isRequired,
   currentUser: PropTypes.string,
+  RatingsTotal: PropTypes.string,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
