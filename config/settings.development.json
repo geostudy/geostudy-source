@@ -128,6 +128,14 @@
       "owner": "john@foo.com"
     },
     {
+      "image": "https://tim.hawaii.edu/wp-content/uploads/2017/08/3_students_discussing_at_smc_web-800x533.jpg",
+      "name": "The Sunset Reference Center",
+      "location": "2560 Campus Road, George Hall 201",
+      "description": "Quiet, lots of resources, indoors, air conditioning",
+      "rating": "4",
+      "owner": "john@foo.com"
+    },
+    {
       "image": "https://i.imgur.com/eBL8AET.jpg",
       "name": "Library Third Floor",
       "location": "2550 McCarthy Mall, Honolulu, HI 96822",
@@ -144,10 +152,42 @@
       "owner": "john@foo.com"
     },
     {
+      "image": "https://www.eastwestcenter.org/sites/default/files/styles/none/public/resize/filemanager/EA/images/garden-crop2-600x327.jpg?itok=Llprmwqo",
+      "name": "Japanese Garden",
+      "location": "1777 East-West Rd, Honolulu, HI 96848",
+      "description": "The Japanese Garden is an amazing place. Quite, peaceful, and good for reading. However I'd suggest wearing some long sleeves if you don't want the bugs flying around.",
+      "rating": "4",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://lh3.googleusercontent.com/proxy/2j4FDLNeFQ7PqcT_PEqJCr8UrXED4RclDchEMb4vgRmRIvh9yd-oGuPaLO1lJkGmC9OzGHP-DZgGh39oLKvswHVGPdySruOrMzK1hsmTQPuBQiHOWgKWwUBUjM3LBaTQ",
+      "name": "Glazer's Coffee",
+      "location": "2700 S King St unit #D101, Honolulu, HI 96826",
+      "description": "If you're not into the starbucks environment but love coffee, Glazer's Coffee is the place for you. They have everything starbucks has but with less calories, and more bang for the buck.",
+      "rating": "4",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://manoa.hawaii.edu/wp/wp-content/uploads/2017/09/korean-studies-bldg-1024x597.jpg",
+      "name": "Center for Korean Studies",
+      "location": "1881 East-West Rd, Honolulu, HI 96822",
+      "description": "They don't have tables but they have couches, indoors, and it is pumped with AC. The people there are nice with a clean water fountain, clean restroom, and clean floors. It's good for pit stops in between classes if you're on the outer rims of UH Manoa. ",
+      "rating": "3",
+      "owner": "john@foo.com"
+    },
+    {
       "image": "https://s3-media1.fl.yelpcdn.com/bphoto/OAuKFTIOFZ-peL70WjJVew/l.jpg",
       "name": "Ban'an",
       "location": "1810 University Ave, Honolulu, HI 96822",
       "description": "Enough tables for group study sessions, AC, good ice cream, and a bus stop right outside. It's walking distance back to campus.  ",
+      "rating": "3",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://manoa.hawaii.edu/opf/images/bldg%20pics/art.jpg",
+      "name": "Art Building ",
+      "location": "2535 McCarthy Mall Honolulu Hawaii 96822",
+      "description": "The Art Building is huge with tables right outside the main auditorium. It has access the largest restroom on campus with vending machines and a experimental fridge. Outdoors, crowd level depends on time of day, you might run into your friend.",
       "rating": "3",
       "owner": "john@foo.com"
     },
@@ -212,6 +252,30 @@
       "name": "Manoa Dining Services",
       "location": "2465 Campus Rd, Honolulu, HI 96822",
       "description": "It's a chill spot to study with your friends or if you have down time in between classes. Not great if you're trying to focus. AC is okay. Noise is loud",
+      "rating": "3",
+      "owner": "john@foo.com"
+    },
+    {
+    "image": "https://s3-media0.fl.yelpcdn.com/bphoto/BQ5WoXRcbYkc5DkEF_55_g/o.jpg",
+    "name": "Dunkin' Donuts",
+    "location": "2560 McCarthy Mall, Honolulu, HI 96822",
+    "description": "Dunkin' is located by Hamilton Library, inside Paradise Palms. They have the best morning coffee's if you love supporting American businesses. The noise can get a little loud but it's fine when you visit non-lunch hours. ",
+    "rating": "3",
+    "owner": "john@foo.com"
+    },
+    {
+      "image": "https://www.bestructural.com/wp-content/uploads/2015/03/Geophysics-570x570_c.jpg",
+      "name": "Hawaii Institute of Geophysics",
+      "location": "2525 Correa Rd Honolulu, HI 96822",
+      "description": "The Hawaii Institute of Geophysics provides enough tables for small groups or for solo studying. It does get crowded in between class times because there's nothing but lecture halls, but if you need a quick study session before class it is perfect.",
+      "rating": "3",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://lh3.googleusercontent.com/proxy/2O0oP5gm76czZcYzh31eSj3Ec65TRvEuC42cBXTIITW4ojA-8aw2ndtwKP7Hlo15zZb9Ti_lDEsKj3vEny2UZaURhjZsMtOgMwe2iN1_sgUMj6DYu4ZsnOOc",
+      "name": "Saunders Hall",
+      "location": "2424 Maile Way, Honolulu, HI 96822",
+      "description": "Saunders Hall is located right next to QLC which has most UH buses going through it every 20 minutes. Saunders Hall has enough tables for single sessions. Outdoors, kind of hot, but it's alright if you need to focus on your work. ",
       "rating": "3",
       "owner": "john@foo.com"
     },
