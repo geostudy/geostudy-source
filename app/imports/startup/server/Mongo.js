@@ -18,7 +18,7 @@ function addTags({ tag, spot }) {
 
 function addRatings({ rating, owner, spot }) {
   console.log(`  Adding: ${spot} (${rating})`);
-  Tags.insert({ rating, owner, spot });
+  Ratings.insert({ rating, owner, spot });
 }
 
 /** Initialize the collection if empty. */
