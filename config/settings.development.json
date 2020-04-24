@@ -168,6 +168,22 @@
       "owner": "john@foo.com"
     },
     {
+      "image": "https://y8jwrjool3-flywheel.netdna-ssl.com/wp-content/uploads/2019/05/Sakamaki_Hall.jpg",
+      "name": "Sakamaki Hall",
+      "location": "2530 Dole St, Honolulu, HI 96822",
+      "description": "Outdoors, a lot of tables, good wind, kind of sucks when it rains even though there are umbrellas.",
+      "rating": "4",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://manoa.hawaii.edu/law/pals/librariankeikookuhara_files/shapeimage_2.png",
+      "name": "William S Richardson Law Library",
+      "location": " 2525 Dole St, Honolulu, HI 96822\n",
+      "description": "Indoors, AC, quiet.",
+      "rating": "4",
+      "owner": "john@foo.com"
+    },
+    {
       "image": "https://manoa.hawaii.edu/wp/wp-content/uploads/2017/09/korean-studies-bldg-1024x597.jpg",
       "name": "Center for Korean Studies",
       "location": "1881 East-West Rd, Honolulu, HI 96822",
@@ -280,6 +296,22 @@
       "owner": "john@foo.com"
     },
     {
+      "image": "https://historichawaii.org/wp-content/uploads/2014/02/Oahu_Honolulu_CampusRoad_2445_photo_byIanClagstone.jpg",
+      "name": "Hemenway Hall",
+      "location": "2445 Campus Rd, Honolulu, HI 96822",
+      "description": "Hemenway Hall has tables outside with shade and good wifi.  ",
+      "rating": "3",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://manoa.hawaii.edu/mop/wp-content/uploads/sites/3/2019/03/dean_hall.jpg",
+      "name": "Dean Hall",
+      "location": "2450 Campus Rd, Honolulu, HI 96822",
+      "description": "Dean hall is indoors with AC. There's benches with enough space for studying.",
+      "rating": "2",
+      "owner": "john@foo.com"
+    },
+    {
       "image": "https://i.imgur.com/tURqjqu.jpg",
       "name": "Campus Center Stairwell",
       "location": "2465 Campus Rd, Honolulu, HI 96822",
@@ -332,6 +364,14 @@
       "name": "Kuykendal Outside Tables",
       "location": "2517-2523 Correa Rd, Honolulu, HI 96822",
       "description": "It straight up sucks, tried it, never again. Actually bridge kid andy. ",
+      "rating": "1",
+      "owner": "admin@foo.com"
+    },
+    {
+      "image": "https://modtraveler.net/wp-content/uploads/2015/08/University-of-Hawaii-8.jpeg",
+      "name": "Keller Hall",
+      "location": "2565 McCarthy Mall, Honolulu, HI 96822",
+      "description": "Unless you have access to a room, the smell and oldness is too much to study. Especially because people smoke right next to the building.",
       "rating": "1",
       "owner": "admin@foo.com"
     },
