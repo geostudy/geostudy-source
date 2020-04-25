@@ -8,18 +8,32 @@
     {
       "email": "john@foo.com",
       "password": "changeme"
+    }
+  ],
+  "defaultData": [
+    {
+      "name": "Basket",
+      "quantity": 3,
+      "owner": "john@foo.com",
+      "condition": "excellent"
     },
     {
-      "email": "jim@foo.com",
-      "password": "changeme"
+      "name": "Bicycle",
+      "quantity": 2,
+      "owner": "john@foo.com",
+      "condition": "poor"
     },
     {
-      "email": "sam@foo.com",
-      "password": "changeme"
+      "name": "Banana",
+      "quantity": 2,
+      "owner": "admin@foo.com",
+      "condition": "good"
     },
     {
-      "email": "bud@foo.com",
-      "password": "changeme"
+      "name": "Boogie Board",
+      "quantity": 2,
+      "owner": "admin@foo.com",
+      "condition": "excellent"
     }
   ],
   "defaultContacts": [
@@ -48,5 +62,174 @@
       "owner": "admin@foo.com"
     }
   ],
-  "loadAssetsFile": true
+  "defaultSpots": [
+    {
+      "image": "https://www.staradvertiser.com/wp-content/uploads/2017/01/web1_CTY-UH-Explosion-Report-084.jpg",
+      "name": "Post Third Floor (IC SPACE)",
+      "location": "1000 Pope Rd, Honolulu, HI 96822",
+      "description": "The third floor provides a study space available to all students who know how to sneak into the POST building past 7pm. Other than the fact that they barricaded the doors with state of the art locks, using the trick that I like to call, going AROUND the building, seems to do the trick. IC Space comes with a snack bar and tables outside if they're having their annual anime yikes meetings.",
+      "rating": "5",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://blog.hawaii.edu/campustalk/files/2009/11/11-11-2.jpg",
+      "name": "Sinclair First Floor Study Space",
+      "location": "Sinclair Building (former library, 2425 Campus Rd, Honolulu, HI 96822",
+      "description": "The study space when you enter sinclair on the right provides tables for single use. The wifi is great and it is not cold. ",
+      "rating": "5",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://i.imgur.com/eBL8AET.jpg",
+      "name": "Library Second Floor Study Rooms",
+      "location": "2550 McCarthy Mall, Honolulu, HI 96822",
+      "description": "Quiet, lots of resources, indoors, AC, private room, chalk board, you have to reserve",
+      "rating": "5",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://www.staradvertiser.com/wp-content/uploads/2017/01/web1_CTY-UH-Explosion-Report-084.jpg",
+      "name": "Post First Floor",
+      "location": "1000 Pope Rd, Honolulu, HI 96822",
+      "description": "You can only study in two study rooms. They are 126, and 127. For some reason they like to keep the lecture room open late, and security is chill about it. Good for meetings. 24/7",
+      "rating": "4",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://i.imgur.com/eBL8AET.jpg",
+      "name": " Hamilton Library First Floor",
+      "location": "2550 McCarthy Mall, Honolulu, HI 96822",
+      "description": "Quiet, lots of resources, indoors, warm",
+      "rating": "4",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://i.imgur.com/eBL8AET.jpg",
+      "name": "Sinclair Second Floor",
+      "location": "Sinclair Building (former library, 2425 Campus Rd, Honolulu, HI 96822",
+      "description": "Quiet, lots of resources, indoors, warm",
+      "rating": "4",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://i.imgur.com/eBL8AET.jpg",
+      "name": "Hamilton Library Second Floor",
+      "location": "2550 McCarthy Mall, Honolulu, HI 96822",
+      "description": "Quiet, lots of resources, indoors, warm",
+      "rating": "4",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://i.imgur.com/eBL8AET.jpg",
+      "name": "Sinclair Third Floor",
+      "location": "Sinclair Building (former library, 2425 Campus Rd, Honolulu, HI 96822",
+      "description": "Quiet, lots of resources, indoors, AC pumping, large tables for groups",
+      "rating": "4",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://i.imgur.com/eBL8AET.jpg",
+      "name": "Library Third Floor",
+      "location": "2550 McCarthy Mall, Honolulu, HI 96822",
+      "description": "Quiet, lots of resources, indoors, air conditioning",
+      "rating": "4",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://www.staradvertiser.com/wp-content/uploads/2017/01/web1_CTY-UH-Explosion-Report-084.jpg",
+      "name": "Post Second Floor",
+      "location": "1000 Pope Rd, Honolulu, HI 96822",
+      "description": "For some reason the UH administration ran out of money to afford AC on the second floor of post so elitist engineering majors assimilate around the large tables. It's okay if you blend in though. 24/7.",
+      "rating": "3",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://upload.wikimedia.org/wikipedia/commons/8/8f/William_S._Richardson_School_of_Law.png",
+      "name": "William S. Richardson School of Law",
+      "location": "2515 Dole St, Honolulu, HI 96822",
+      "description": "They got good lighting but lacking tables. If you find one though it's smooth sailing if you get a long enough extension cord for an outlet.",
+      "rating": "3",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://bloximages.newyork1.vip.townnews.com/manoanow.org/content/tncms/assets/v3/editorial/4/d1/4d14b9d0-7e2b-11e6-bddb-5b875e70ae25/57df79edb83b2.image.jpg?resize=1200%2C900",
+      "name": "Paradise Palms",
+      "location": "2560 McCarthy Mall, Honolulu, HI 96822",
+      "description": "Loud, A lot of people talking, a lot of table space though",
+      "rating": "3",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://historichawaii.org/wp-content/uploads/2014/02/Oahu_Honolulu_DoleStreet_2411_photo_byIanClagstone.jpg",
+      "name": "Music Building",
+      "location": "2411 Dole St, Honolulu, HI 96822",
+      "description": "Really great if you know around the place, if you have access the music room and storage rooms there's desks with little to no people coming in and out after hours.",
+      "rating": "3",
+      "owner": "john@foo.com"
+    },
+    {
+      "image": "https://i.imgur.com/tURqjqu.jpg",
+      "name": "Campus Center Stairwell",
+      "location": "2465 Campus Rd, Honolulu, HI 96822",
+      "description": "Background noise, outdoors, sunny",
+      "rating": "2",
+      "owner": "admin@foo.com"
+    },
+    {
+      "image": "https://www.hawaii.edu/campuscenter/services/images/CCCourtyard.jpg",
+      "name": "Campus Center Tree",
+      "location": "2465 Campus Rd, Honolulu, HI 96822",
+      "description": "Background noise, outdoors, sunny, LOUD",
+      "rating": "2",
+      "owner": "admin@foo.com"
+    },
+    {
+      "image": "https://manoa.hawaii.edu/news/attachments/img7693_5819l.jpg",
+      "name": "Shidler College of Business",
+      "location": "2404 Maile Way, Honolulu, HI 96822",
+      "description": "Background noise, outdoors, sunny, there's a snack bar but over priced, tables are dirty.",
+      "rating": "2",
+      "owner": "admin@foo.com"
+    },
+    {
+      "image": "https://d1l18ops95qbzp.cloudfront.net/wp-content/2018/10/17080320/University-of-Hawaii-at-Manoa-Parking-Structure-UH.jpg",
+      "name": "Parking Structure",
+      "location": "1323 Lower Campus Rd, Honolulu, HI 96822",
+      "description": "Honestly, the structure isn't that bad. The wifi is good in certain places and it's great if you cramming for a midterm. ",
+      "rating": "2",
+      "owner": "admin@foo.com"
+    },
+    {
+      "image": "https://www.hawaii.edu/news/wp-content/uploads/2019/03/manoa-kennedy-theatre.jpg",
+      "name": "John F. Kennedy Theatre",
+      "location": "1770 East-West Rd, Honolulu, HI 96822",
+      "description": "Background noise, bus keeps driving by, no table space",
+      "rating": "1",
+      "owner": "admin@foo.com"
+    },
+    {
+      "image": "https://www.hawaii.edu/campuscenter/vendors/subway2.JPG",
+      "name": "Campus Center Subway",
+      "location": "2465 Campus Rd, Honolulu, HI 96822",
+      "description": "Background noise, smells, no table space",
+      "rating": "1",
+      "owner": "admin@foo.com"
+    },
+    {
+      "image": "https://jehomrich.atavist.com/data/files/organization/103686/image/derivative/scale~1200x1200~img4224-1461869712-70.jpg?1461893601",
+      "name": "Kuykendal Outside Tables",
+      "location": "2517-2523 Correa Rd, Honolulu, HI 96822",
+      "description": "It straight up sucks, tried it, never again. Actually bridge kid andy. ",
+      "rating": "1",
+      "owner": "admin@foo.com"
+    },
+    {
+      "image": "https://live.staticflickr.com/2876/13769452035_15fe8449d3_b.jpg",
+      "name": "Warrior Recreation Center",
+      "location": "2505 Campus Rd, Honolulu, HI 96822",
+      "description": "For some reason there's half naked people trying to sweat on my laptop. They keep asking me if I could spot but the only thing I'm spotting is a top heavy built man with chicken legs.",
+      "rating": "0",
+      "owner": "admin@foo.com"
+    }
+  ]
 }

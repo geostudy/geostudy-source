@@ -1,43 +1,55 @@
 import React from 'react';
 import swal from 'sweetalert';
-import { Grid, Segment, Header } from 'semantic-ui-react';
+import { Grid, Segment, Header, Loader } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField, RadioField } from 'uniforms-semantic';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import { Meteor } from 'meteor/meteor';
+import SimpleSchema from 'simpl-schema';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Spots, SpotsSchema } from '../../api/spot/Spots';
+import { Spots } from '../../api/spot/Spots';
+
+/** Create a schema to specify the structure of the data to appear in the form. */
+const SpotSchema = new SimpleSchema({
+  image: String,
+  name: String,
+  location: String,
+  description: String,
+  rating: {
+    type: Number,
+    allowedValues: [1, 2, 3, 4, 5],
+  },
+});
 
 /** Renders the Page for adding a document. */
 class EditSpot extends React.Component {
 
   /** On submit, insert the data. */
-  submit(data, formRef) {
-    const { name, latitude, longitude, description, rating } = data;
-    const owner = Meteor.user().username;
-    Spots.insert({ name, latitude, longitude, description, rating },
-      (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'Item added successfully', 'success');
-          formRef.reset();
-        }
-      });
+  submit(data) {
+    const { image, name, location, description, rating, owner, tags } = data;
+    // const owner = Meteor.user().username;
+    Spots.update(owner, tags, { $set: { image, name, location, description, rating } },
+        (error) => (error ?
+            swal('Error', error.message, 'error') :
+            swal('Success', 'Spot Updated successfully', 'success')));
+  }
+
+  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
+  render() {
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
-    let fRef = null;
     return (
         <Grid container centered>
           <Grid.Column>
             <Header as="h2" textAlign="center" inverted>Edit Spot</Header>
-            <AutoForm ref={ref => { fRef = ref; }} schema={SpotsSchema} onSubmit={data => this.submit(data, fRef)} >
+            <AutoForm schema={SpotSchema} onSubmit={data => this.submit(data)} >
               <Segment>
+                <TextField name='image'/>
                 <TextField name='name'/>
-                <TextField name='latitude'/>
-                <TextField name='longitude'/>
+                <TextField name='location'/>
                 <LongTextField name='description'/>
                 <RadioField name='rating' inline/>
                 <SubmitField value='Submit'/>
@@ -50,7 +62,7 @@ class EditSpot extends React.Component {
   }
 }
 
-/** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
+/** Require the presence of a Spot document in the props object. Uniforms adds 'model' to the props, which we use. */
 EditSpot.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
@@ -68,4 +80,3 @@ export default withTracker(({ match }) => {
     ready: subscription.ready(),
   };
 })(EditSpot);
-
