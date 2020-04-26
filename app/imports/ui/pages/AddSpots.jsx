@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
-import { connectField } from 'uniforms';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import swal from 'sweetalert';
 import SimpleSchema from 'simpl-schema';
@@ -14,37 +13,6 @@ const formSchema = new SimpleSchema({
   location: String,
   description: String,
 });
-
-function Image({ onChange, value }) {
-  const imgPlaceholder = 'images/temp-picture.png';
-
-  function onImageChange({ target: { files } }) {
-    if (files && files[0]) {
-      onChange(URL.createObjectURL(files[0]));
-    }
-  }
-
-  return (
-      <div className="ImageField">
-        <label htmlFor="file-input">
-          <div>Choose your photo</div>
-          <img
-              style={{ cursor: 'pointer', width: '197px', height: '140px' }}
-              src={value ? value : imgPlaceholder}
-          />
-        </label>
-        <input
-            accept="image/*"
-            id="file-input"
-            onChange={onImageChange}
-            style={{ display: 'none' }}
-            type="file"
-        />
-      </div>
-  );
-}
-
-const ImageField = connectField(Image);
 
 /** Renders the Page for adding a document. */
 class AddSpots extends React.Component {
@@ -77,7 +45,8 @@ class AddSpots extends React.Component {
             }} schema={formSchema} onSubmit={data => this.submit(data, fRef)}>
               <Segment>
                 <TextField name='name'/>
-                <ImageField name='image'/>
+                <p>Upload your image to <a href="https://imgur.com/">Imgur</a> and paste the link here!</p>
+                <TextField name='image'/>
                 <TextField name='location'/>
                 <LongTextField name='description'/>
                 <SubmitField value='Submit'/>
