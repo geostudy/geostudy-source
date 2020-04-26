@@ -19,6 +19,7 @@ import Map from '../pages/Map';
 import ListSpots from '../pages/ListSpots';
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
+
   render() {
     return (
         <Router>
@@ -34,7 +35,6 @@ class App extends React.Component {
               <ProtectedRoute path="/add" component={AddSpots}/>
               <ProtectedRoute path="/edit" component={EditSpot}/>
               <ProtectedRoute path="/edit/:_id" component={EditSpot}/>
-              <AdminProtectedRoute path="/admin" component={SpotsAdmin}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
             </Switch>

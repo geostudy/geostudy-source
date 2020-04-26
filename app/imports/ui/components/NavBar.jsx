@@ -25,9 +25,6 @@ class NavBar extends React.Component {
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Spots</Menu.Item>,
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/map" key='map'>Map</Menu.Item>]
           ) : ''}
-          {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
-          ) : ''}
           <Menu.Item position="right">
             {this.props.currentUser === '' ? (
                 <Dropdown text="Login" pointing="top right" icon={'user'}>
