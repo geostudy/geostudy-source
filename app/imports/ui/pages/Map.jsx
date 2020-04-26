@@ -8,7 +8,7 @@ class GoogleMaps extends React.Component {
   render() {
     return (
         <div className="ui container" style={{ width: '70vw', height: '70vh', margin:'50px' }}>
-          <WrappedMap googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCeFS8T27RlCxMzV641cxQmBLh0nDo4fIA'}
+          <WrappedMap googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo'}
                       loadingElement={<div style={{ height: `100%` }}/>}
                       containerElement={<div style={{ height: `100%` }}/>}
                       mapElement={<div style={{ height: `100%` }}/>}

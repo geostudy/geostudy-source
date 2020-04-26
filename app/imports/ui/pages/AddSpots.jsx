@@ -5,6 +5,7 @@ import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import swal from 'sweetalert';
 import SimpleSchema from 'simpl-schema';
 import { Spots } from '../../api/spot/Spots';
+import { GoogleMap, withGoogleMap, withScriptjs } from "react-google-maps";
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
@@ -38,25 +39,48 @@ class AddSpots extends React.Component {
     let fRef = null;
     return (
         <Grid container centered>
-          <Grid.Column>
+          <Grid.Row>
             <Header as="h2" textAlign="center" inverted>Add Spot</Header>
-            <AutoForm ref={ref => {
-              fRef = ref;
-            }} schema={formSchema} onSubmit={data => this.submit(data, fRef)}>
-              <Segment>
-                <TextField name='name'/>
-                <p>Upload your image to <a href="https://imgur.com/">Imgur</a> and paste the link here!</p>
-                <TextField name='image'/>
-                <TextField name='location'/>
-                <LongTextField name='description'/>
-                <SubmitField value='Submit'/>
-                <ErrorsField/>
-              </Segment>
-            </AutoForm>
-          </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={8}>
+              <AutoForm ref={ref => {
+                fRef = ref;
+              }} schema={formSchema} onSubmit={data => this.submit(data, fRef)}>
+                <Segment>
+                  <TextField name='name'/>
+                  <p>Upload your image to <a href="https://imgur.com/">Imgur</a> and paste the link here!</p>
+                  <TextField name='image'/>
+                  <TextField name='location'/>
+                  <LongTextField name='description'/>
+                  <SubmitField value='Submit'/>
+                  <ErrorsField/>
+                </Segment>
+              </AutoForm>
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <div className="ui container" style={{ width: '70vw', height: '46vh', margin: '0em' }}>
+                <WrappedMap
+                    googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo'}
+                    loadingElement={<div style={{ height: `100%` }}/>}
+                    containerElement={<div style={{ height: `100%` }}/>}
+                    mapElement={<div style={{ height: `100%` }}/>}
+                />
+              </div>
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
     );
   }
 }
+
+function Map() {
+  return <GoogleMap
+      defaultZoom={17}
+      defaultCenter={{ lat: 21.297274, lng: -157.817359 }}
+  />;
+}
+
+const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default AddSpots;
