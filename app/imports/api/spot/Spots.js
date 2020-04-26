@@ -11,13 +11,10 @@ const SpotsSchema = new SimpleSchema({
   name: String,
   location: String,
   description: String,
+  rating: Number,
   owner: String,
   tags: Array,
   'tags.$': String,
-  rating: {
-    type: Number,
-    allowedValues: [1, 2, 3, 4, 5],
-  },
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */
