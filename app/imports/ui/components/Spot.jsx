@@ -1,11 +1,9 @@
 import React from 'react';
-import { _ } from 'meteor/underscore';
 import { Button, Item } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
-import { Ratings } from '../../api/rating/Ratings';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Spot extends React.Component {
@@ -24,7 +22,7 @@ class Spot extends React.Component {
             </Item.Description>
             <Item.Extra>
               <p className='spots-text'>
-                Rating: {this.props.RatingsTotal}
+                Rating: {this.props.Spots.find().count()}
               </p>
             </Item.Extra>
             <Item.Extra>
@@ -43,14 +41,21 @@ class Spot extends React.Component {
   removeItem(spotId) {
     this.props.Spots.remove(spotId);
   }
+
+  getRating() {
+    const ratingName = this.props.spot.name;
+    console.log(ratingName);
+  }
 }
 
 /** Require a document to be passed to this component. */
 Spot.propTypes = {
   Spots: PropTypes.object.isRequired,
   spot: PropTypes.object.isRequired,
+  Ratings: PropTypes.object.isRequired,
+  rating: PropTypes.object.isRequired,
+  tag: PropTypes.object.isRequired,
   currentUser: PropTypes.string,
-  RatingsTotal: PropTypes.string,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
