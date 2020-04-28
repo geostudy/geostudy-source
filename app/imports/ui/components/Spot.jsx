@@ -24,17 +24,19 @@ class Spot extends React.Component {
             <Item.Extra>
               <p className='spots-text'>
                 Rating: &nbsp; {this.getRating(this.props.spot.name)} &nbsp;
-               ({this.getRatingCount(this.props.Ratings.find({ spot: this.props.spot.name }).count())})
-            </p>
+                ({this.getRatingCount(this.props.Ratings.find({ spot: this.props.spot.name }).count())})
+              </p>
             </Item.Extra>
-            <Item.Extra>
-              <Link to={`/edit/${this.props.spot._id}`} className='spots-test'>Edit</Link>
-            </Item.Extra>
-            <Item.Extra>
-              {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+            {Roles.userIsInRole(Meteor.userId(), 'admin') || (Meteor.user().username === this.props.spot.owner) ? (
+                <Item.Extra>
+                  <Link to={`/edit/${this.props.spot._id}`} className='spots-test'>Edit</Link>
+                </Item.Extra>
+            ) : ''}
+            {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+                <Item.Extra>
                   <Button className="ui button" onClick={() => this.removeItem(this.props.spot._id)}>Delete</Button>
-              ) : ''}
-            </Item.Extra>
+                </Item.Extra>
+            ) : ''}
           </Item.Content>
         </Item>
     );
