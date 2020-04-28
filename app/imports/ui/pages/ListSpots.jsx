@@ -5,6 +5,7 @@ import Spot from '/imports/ui/components/Spot';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Spots } from '../../api/spot/Spots';
+import { Ratings } from '../../api/rating/Ratings';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListSpots extends React.Component {
@@ -20,8 +21,8 @@ class ListSpots extends React.Component {
         <Container>
           <Header as="h2" textAlign="center" inverted>Spots</Header>
             <Item.Group>
-              {this.props.spots.map((spot, index) => <Spot key={index} Spots={Spots}
-                spot={spot}/>)}
+              {this.props.spots.map((spot, index) => <Spot key={index} Spots={Spots} spot={spot}
+               Ratings={Ratings} rating={this.props.ratings}/>)}
             </Item.Group>
         </Container>
     );
@@ -31,6 +32,7 @@ class ListSpots extends React.Component {
 /** Require an array of Stuff documents in the props. */
 ListSpots.propTypes = {
   spots: PropTypes.array.isRequired,
+  ratings: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -38,8 +40,10 @@ ListSpots.propTypes = {
 export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('Spots');
+  const subscription2 = Meteor.subscribe('Ratings');
   return {
     spots: Spots.find({}).fetch(),
-    ready: subscription.ready(),
+    ratings: Ratings.find({}).fetch(),
+    ready: (subscription.ready() && subscription2.ready()),
   };
 })(ListSpots);
