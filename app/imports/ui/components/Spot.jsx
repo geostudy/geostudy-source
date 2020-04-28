@@ -1,10 +1,11 @@
 import React from 'react';
-import { Button, Item } from 'semantic-ui-react';
+import { Button, Item, Rating } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { withRouter, Link } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
+import AddRating from './AddRating';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Spot extends React.Component {
@@ -22,10 +23,13 @@ class Spot extends React.Component {
               </p>
             </Item.Description>
             <Item.Extra>
-              <p className='spots-text'>
-                Rating: &nbsp; {this.getRating(this.props.spot.name)} &nbsp;
+              <div className='spots-text'> Rating:
+                &nbsp; <Rating icon='star' maxRating={5} rating={this.getRating(this.props.spot.name)} disabled/> &nbsp;
                ({this.getRatingCount(this.props.Ratings.find({ spot: this.props.spot.name }).count())})
-            </p>
+            </div>
+            </Item.Extra>
+            <Item.Extra>
+              <AddRating owner={Meteor.user().username} spot={this.props.spot.name}/>
             </Item.Extra>
             <Item.Extra>
               <Link to={`/edit/${this.props.spot._id}`} className='spots-test'>Edit</Link>
