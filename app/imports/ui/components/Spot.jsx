@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Item } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
+import { _ } from 'meteor/underscore';
 import { withRouter, Link } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
 
@@ -22,8 +23,9 @@ class Spot extends React.Component {
             </Item.Description>
             <Item.Extra>
               <p className='spots-text'>
-                Rating: {this.props.Spots.find().count()}
-              </p>
+                Rating: &nbsp; {this.getRating(this.props.spot.name)} &nbsp;
+               ({this.getRatingCount(this.props.Ratings.find({ spot: this.props.spot.name }).count())})
+            </p>
             </Item.Extra>
             <Item.Extra>
               <Link to={`/edit/${this.props.spot._id}`} className='spots-test'>Edit</Link>
@@ -42,9 +44,21 @@ class Spot extends React.Component {
     this.props.Spots.remove(spotId);
   }
 
-  getRating() {
-    const ratingName = this.props.spot.name;
-    console.log(ratingName);
+  getRating(nameGet) {
+    const infoGet = _.pluck(this.props.Ratings.find({ spot: nameGet }).fetch(), 'rating');
+    if (infoGet === undefined || infoGet.length === 0 || infoGet.length === 1) {
+      return 'N/A';
+    }
+    const infoReduce = _.reduce(infoGet, (memo, num) => memo + num);
+    const infoAverage = (infoReduce / infoGet.length - 1);
+    return infoAverage;
+  }
+
+  getRatingCount(number) {
+    if (number <= 0) {
+      return 0;
+    }
+    return number - 1;
   }
 }
 
@@ -53,8 +67,7 @@ Spot.propTypes = {
   Spots: PropTypes.object.isRequired,
   spot: PropTypes.object.isRequired,
   Ratings: PropTypes.object.isRequired,
-  rating: PropTypes.object.isRequired,
-  tag: PropTypes.object.isRequired,
+  rating: PropTypes.array.isRequired,
   currentUser: PropTypes.string,
 };
 
