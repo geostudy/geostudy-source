@@ -20,6 +20,10 @@
     {
       "email": "bud@foo.com",
       "password": "changeme"
+    },
+    {
+      "email": "default@foo.com",
+      "password": "changeme"
     }
   ],
   "defaultContacts": [
