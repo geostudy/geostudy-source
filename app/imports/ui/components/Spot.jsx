@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Item } from 'semantic-ui-react';
+import { Button, Item, Rating } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
@@ -22,10 +22,10 @@ class Spot extends React.Component {
               </p>
             </Item.Description>
             <Item.Extra>
-              <p className='spots-text'>
-                Rating: &nbsp; {this.getRating(this.props.spot.name)} &nbsp;
-                ({this.getRatingCount(this.props.Ratings.find({ spot: this.props.spot.name }).count())})
-              </p>
+              <div className='spots-text'> Rating:
+                &nbsp; <Rating icon='star' maxRating={5} rating={this.getRating(this.props.spot.name)} disabled/> &nbsp;
+               ({this.getRatingCount(this.props.Ratings.find({ spot: this.props.spot.name }).count())})
+            </div>
             </Item.Extra>
             {Roles.userIsInRole(Meteor.userId(), 'admin') || (Meteor.user().username === this.props.spot.owner) ? (
                 <Item.Extra>
