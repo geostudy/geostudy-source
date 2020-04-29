@@ -1,6 +1,6 @@
 import React from 'react';
-import {Item, Rating, Container } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, HiddenField, SubmitField } from 'uniforms-semantic';
+import { Item, Rating, Container } from 'semantic-ui-react';
+import { AutoForm, ErrorsField, HiddenField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import PropTypes from 'prop-types';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
@@ -30,7 +30,9 @@ class AddRating extends React.Component {
             <AutoForm ref={ref => { fRef = ref; }} schema={RatingsSchema} onSubmit={data => this.submit(data, fRef)} >
               <Container>
               <Item.Extra>
-                <Rating icon='star' maxRating={5}/>
+                <Rating className='ratingInterface' icon='star' defaultRating={0} maxRating={5}
+                   onRate=
+                      {this.getRating}/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
                 <HiddenField name='owner' value={this.props.owner}/>
@@ -39,6 +41,11 @@ class AddRating extends React.Component {
               </Container>
             </AutoForm>
     );
+  }
+
+  getRating = (event, data) => {
+    console.log(data.rating);
+    return (<HiddenField name='rating' value={data.rating}/>);
   }
 }
 
