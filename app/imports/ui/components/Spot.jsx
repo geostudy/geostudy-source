@@ -48,11 +48,12 @@ class Spot extends React.Component {
 
   getRating(nameGet) {
     const infoGet = _.pluck(this.props.Ratings.find({ spot: nameGet }).fetch(), 'rating');
-    if (infoGet === undefined || infoGet.length === 0 || infoGet.length === 1) {
-      return 'N/A';
+    if (infoGet === undefined || infoGet.length === 0) {
+      return '0';
     }
     const infoReduce = _.reduce(infoGet, (memo, num) => memo + num);
-    const infoAverage = (infoReduce / infoGet.length - 1);
+    const infoLength = (infoGet.length - 1);
+    const infoAverage = (infoReduce / infoLength);
     return infoAverage;
   }
 
