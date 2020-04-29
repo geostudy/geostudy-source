@@ -34,7 +34,8 @@ class Spot extends React.Component {
             ) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
                 <Item.Extra>
-                  <Button className="ui button" onClick={() => this.removeItem(this.props.spot._id)}>Delete</Button>
+                  <Button className="ui button"
+                          onClick={() => this.removeItem(this.props.spot._id)}>Delete</Button>
                 </Item.Extra>
             ) : ''}
           </Item.Content>

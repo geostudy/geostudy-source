@@ -46,7 +46,7 @@
         "tags": []
       },
       {
-        "image": "https://manoa.hawaii.edu/undergrad/ssc/wp-content/uploads/2014/04/sinclair002.jpg",
+        "image": "https://www.hawaii.edu/news/wp-content/uploads/2019/01/manoa-sinclair-library-renovations-1.jpg",
         "name": "Sinclair Second Floor",
         "location": "Sinclair Building (former library, 2425 Campus Rd, Honolulu, HI 96822",
         "description": "Quiet, lots of resources, indoors, warm",
@@ -64,7 +64,7 @@
         "tags": []
       },
       {
-        "image": "https://manoa.hawaii.edu/undergrad/ssc/wp-content/uploads/2014/04/sinclair002.jpg",
+        "image": "https://www.hawaii.edu/news/wp-content/uploads/2019/01/manoa-sinclair-library-renovations-1.jpg",
         "name": "Sinclair Third Floor",
         "location": "Sinclair Building (former library, 2425 Campus Rd, Honolulu, HI 96822",
         "description": "Quiet, lots of resources, indoors, AC pumping, large tables for groups",
@@ -622,7 +622,7 @@
     {
       "rating": 0,
       "owner": "default@foo.com",
-      "spot": "Starfucks (not on campus)"
+      "spot": "Starbucks (not on campus)"
     },
     {
       "rating": 0,

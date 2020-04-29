@@ -1,11 +1,12 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import swal from 'sweetalert';
 import SimpleSchema from 'simpl-schema';
+import { GoogleMap, withGoogleMap, withScriptjs } from 'react-google-maps';
 import { Spots } from '../../api/spot/Spots';
-import { GoogleMap, withGoogleMap, withScriptjs } from "react-google-maps";
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
@@ -61,10 +62,11 @@ class AddSpots extends React.Component {
             <Grid.Column width={8}>
               <div className="ui container" style={{ width: '70vw', height: '46vh', margin: '0em' }}>
                 <WrappedMap
-                    googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo'}
-                    loadingElement={<div style={{ height: `100%` }}/>}
-                    containerElement={<div style={{ height: `100%` }}/>}
-                    mapElement={<div style={{ height: `100%` }}/>}
+                    googleMapURL={'https://maps.googleapis.com/maps/' +
+                    'api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo'}
+                    loadingElement={<div style={{ height: '100%' }}/>}
+                    containerElement={<div style={{ height: '100%' }}/>}
+                    mapElement={<div style={{ height: '100%' }}/>}
                 />
               </div>
             </Grid.Column>
