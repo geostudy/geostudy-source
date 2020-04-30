@@ -36,7 +36,7 @@ class ListSpots extends React.Component {
                 <Spot key={index} Spots={Spots} spot={spot}
                       Ratings={Ratings} rating={this.props.ratings}/>)}
           </Item.Group>
-          <Divider/>
+          <hr />
           <Container textAlign={'center'}>
             <Pagination
                 defaultActivePage={1}
@@ -45,8 +45,7 @@ class ListSpots extends React.Component {
                 lastItem={{ content: <Icon name='angle double right'/>, icon: true }}
                 prevItem={{ content: <Icon name='angle left'/>, icon: true }}
                 nextItem={{ content: <Icon name='angle right'/>, icon: true }}
-                totalPages={Math.ceil(this.props.spots
-                    .filter(spots).length / 20)}
+                totalPages={Math.ceil(this.props.spots.length / 5)}
                 onPageChange={this.handleChange}
             />
           </Container>
