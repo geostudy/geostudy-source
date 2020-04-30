@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Spots } from '../../api/spot/Spots';
 import { Tags } from '../../api/tag/Tags';
 import { Ratings } from '../../api/rating/Ratings';
-
+import { publishPagination } from 'meteor/kurounin:pagination';
 
 /** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('Spots', function publish() {
@@ -25,4 +25,5 @@ Meteor.publish('Ratings', function publish() {
   }
   return this.ready();
 });
-//
+
+publishPagination(Spots);
