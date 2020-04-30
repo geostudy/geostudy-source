@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import 'semantic-ui-css/semantic.css';
 import { Roles } from 'meteor/alanning:roles';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import SpotsAdmin from '../pages/SpotsAdmin';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
@@ -17,10 +16,12 @@ import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import Map from '../pages/Map';
 import ListSpots from '../pages/ListSpots';
+
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
 
   render() {
+
     return (
         <Router>
           <div>
