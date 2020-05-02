@@ -283,489 +283,489 @@
   ],
   "tags": [
     {
-      "tag": "Air Conditioned",
+      "name": "Air Conditioned",
       "spot": ["Post Third Floor (IC SPACE)", "Sinclair First Floor Study Space", "Library Second Floor Study Rooms", "Post First Floor", "Hamilton Library First Floor"]
     },
     {
-      "tag": "Indoors",
+      "name": "Indoors",
       "spot": ["Post Third Floor (IC SPACE)", "Sinclair First Floor Study Space", "Library Second Floor Study Rooms", "Post First Floor"]
     },
     {
-      "tag": "Outdoors",
+      "name": "Outdoors",
       "spot": ["Post Third Floor (IC SPACE)", "Sinclair First Floor Study Space", "Library Second Floor Study Rooms"]
     },
     {
-      "tag": "Quiet",
+      "name": "Quiet",
       "spot": ["Post Third Floor (IC SPACE)", "Sinclair First Floor Study Space"]
     },
     {
-      "tag": "Noisy",
+      "name": "Noisy",
       "spot": ["Post Third Floor (IC SPACE)"]
     },
     {
-      "tag": "Sunny",
+      "name": "Sunny",
       "spot": ["Post Third Floor (IC SPACE)", "Sinclair First Floor Study Space", "Library Second Floor Study Rooms", "Post First Floor", "Hamilton Library First Floor"]
     },
     {
-      "tag": "Wi-Fi",
+      "name": "Wi-Fi",
       "spot": ["Sinclair First Floor Study Space", "Library Second Floor Study Rooms", "Post First Floor", "Hamilton Library First Floor"]
     },
     {
-      "tag": "Crowded",
+      "name": "Crowded",
       "spot": ["Library Second Floor Study Rooms", "Post First Floor", "Hamilton Library First Floor"]
     },
     {
-      "tag": "Tables",
+      "name": "Tables",
       "spot": ["Post First Floor", "Hamilton Library First Floor"]
     },
     {
-      "tag": "Music",
+      "name": "Music",
       "spot": ["Hamilton Library First Floor"]
     }
   ],
   "ratings": [
     {
-      "rating": 5,
+      "score": 5,
       "owner": "john@foo.com",
       "spot": "Post Third Floor (IC SPACE)"
     },
     {
-      "rating": 5,
+      "score": 5,
       "owner": "admin@foo.com",
       "spot": "Post Third Floor (IC SPACE)"
     },
     {
-      "rating": 5,
+      "score": 5,
       "owner": "jim@foo.com",
       "spot": "Post Third Floor (IC SPACE)"
     },
     {
-      "rating": 5,
+      "score": 5,
       "owner": "sam@foo.com",
       "spot": "Post Third Floor (IC SPACE)"
     },
     {
-      "rating": 5,
+      "score": 5,
       "owner": "bud@foo.com",
       "spot": "Post Third Floor (IC SPACE)"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Post Third Floor (IC SPACE)"
     },
     {
-      "rating": 5,
+      "score": 5,
       "owner": "john@foo.com",
       "spot": "Sinclair First Floor Study Space"
     },
     {
-      "rating": 5,
+      "score": 5,
       "owner": "admin@foo.com",
       "spot": "Sinclair First Floor Study Space"
     },
     {
-      "rating": 1,
+      "score": 1,
       "owner": "sam@foo.com",
       "spot": "Sinclair First Floor Study Space"
     },
     {
-      "rating": 1,
+      "score": 1,
       "owner": "bud@foo.com",
       "spot": "Sinclair First Floor Study Space"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Sinclair First Floor Study Space"
     },
     {
-      "rating": 1,
+      "score": 1,
       "owner": "admin@foo.com",
       "spot": "Library Second Floor Study Rooms"
     },
     {
-      "rating": 2,
+      "score": 2,
       "owner": "john@foo.com",
       "spot": "Library Second Floor Study Rooms"
     },
     {
-      "rating": 3,
+      "score": 3,
       "owner": "bud@foo.com",
       "spot": "Library Second Floor Study Rooms"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Library Second Floor Study Rooms"
     },
     {
-      "rating": 2,
+      "score": 2,
       "owner": "john@foo.com",
       "spot": "Post First Floor"
     },
     {
-      "rating": 4,
+      "score": 4,
       "owner": "admin@foo.com",
       "spot": "Post First Floor"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Post First Floor"
     },
     {
-      "rating": 1,
+      "score": 1,
       "owner": "@foo.com",
       "spot": "Hamilton Library First Floor"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Hamilton Library First Floor"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Sinclair Second Floor"
     },
     {
-      "rating": 2,
+      "score": 2,
       "owner": "john@foo.com",
       "spot": "Hamilton Library Second Floor"
     },
     {
-      "rating": 2,
+      "score": 2,
       "owner": "admin@foo.com",
       "spot": "Hamilton Library Second Floor"
     },
     {
-      "rating": 4,
+      "score": 4,
       "owner": "jim@foo.com",
       "spot": "Hamilton Library Second Floor"
     },
     {
-      "rating": 3,
+      "score": 3,
       "owner": "sam@foo.com",
       "spot": "Hamilton Library Second Floor"
     },
     {
-      "rating": 5,
+      "score": 5,
       "owner": "bud@foo.com",
       "spot": "Hamilton Library Second Floor"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Hamilton Library Second Floor"
     },
     {
-      "rating": 2,
+      "score": 2,
       "owner": "jim@foo.com",
       "spot": "Sinclair Third Floor"
     },
     {
-      "rating": 3,
+      "score": 3,
       "owner": "sam@foo.com",
       "spot": "Sinclair Third Floor"
     },
     {
-      "rating": 2,
+      "score": 2,
       "owner": "bud@foo.com",
       "spot": "Sinclair Third Floor"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Sinclair Third Floor"
     },
     {
-      "rating": 5,
+      "score": 5,
       "owner": "jim@foo.com",
       "spot": "The Sunset Reference Center"
     },
     {
-      "rating": 5,
+      "score": 5,
       "owner": "sam@foo.com",
       "spot": "The Sunset Reference Center"
     },
     {
-      "rating": 4,
+      "score": 4,
       "owner": "bud@foo.com",
       "spot": "The Sunset Reference Center"
     },
     {
-      "rating": 5,
+      "score": 5,
       "owner": "admin@foo.com",
       "spot": "The Sunset Reference Center"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "The Sunset Reference Center"
     },
     {
-      "rating": 2,
+      "score": 2,
       "owner": "jim@foo.com",
       "spot": "Library Third Floor"
     },
     {
-      "rating": 2,
+      "score": 2,
       "owner": "sam@foo.com",
       "spot": "Library Third Floor"
     },
     {
-      "rating": 3,
+      "score": 3,
       "owner": "bud@foo.com",
       "spot": "Library Third Floor"
     },
     {
-      "rating": 1,
+      "score": 1,
       "owner": "admin@foo.com",
       "spot": "Library Third Floor"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Library Third Floor"
     },
     {
-      "rating": 4,
+      "score": 4,
       "owner": "bud@foo.com",
       "spot": "Starbucks (not on campus)"
     },
     {
-      "rating": 5,
+      "score": 5,
       "owner": "admin@foo.com",
       "spot": "Starbucks (not on campus)"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Starbucks (not on campus)"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Japanese Garden"
     },
     {
-      "rating": 5,
+      "score": 5,
       "owner": "admin@foo.com",
       "spot": "Glazer's Coffee"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Glazer's Coffee"
     },
     {
-      "rating": 2,
+      "score": 2,
       "owner": "admin@foo.com",
       "spot": "Sakamaki Hall"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Sakamaki Hall"
     },
     {
-      "rating": 3,
+      "score": 3,
       "owner": "jim@foo.com",
       "spot": "Post Second Floor"
     },
     {
-      "rating": 2,
+      "score": 2,
       "owner": "sam@foo.com",
       "spot": "Post Second Floor"
     },
     {
-      "rating": 3,
+      "score": 3,
       "owner": "bud@foo.com",
       "spot": "Post Second Floor"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "William S Richardson Law Library"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Center for Korean Studies"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Ban'an"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Art Building"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Campus Center Second Floor Starbucks"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Post Second Floor"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Stan Sheriff Center"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "William S. Richardson School of Law"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Pieology"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Paradise Palms"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Music Building"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Manoa Dining Services"
     },
     {
-      "rating": 4,
+      "score": 4,
       "owner": "admin@foo.com",
       "spot": "Dunkin' Donuts"
     },
     {
-      "rating": 3,
+      "score": 3,
       "owner": "jim@foo.com",
       "spot": "Dunkin' Donuts"
     },
     {
-      "rating": 3,
+      "score": 3,
       "owner": "sam@foo.com",
       "spot": "Dunkin' Donuts"
     },
     {
-      "rating": 3,
+      "score": 3,
       "owner": "bud@foo.com",
       "spot": "Dunkin' Donuts"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Hawaii Institute of Geophysics"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Saunders Hall"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Hemenway Hall"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Dean Hall"
     },
     {
-      "rating": 1,
+      "score": 1,
       "owner": "jim@foo.com",
       "spot": "Campus Center Stairwell"
     },
     {
-      "rating": 1,
+      "score": 1,
       "owner": "sam@foo.com",
       "spot": "Campus Center Stairwell"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Campus Center Stairwell"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Campus Center Tree"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Shidler College of Business"
     },
     {
-      "rating": 1,
+      "score": 1,
       "owner": "sam@foo.com",
       "spot": "Parking Structure"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Parking Structure"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "John F. Kennedy Theatre"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Campus Center Subway"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Kuykendal Outside Tables"
     },
     {
-      "rating": 2,
+      "score": 2,
       "owner": "john@foo.com",
       "spot": "Keller Hall"
     },
     {
-      "rating": 3,
+      "score": 3,
       "owner": "admin@foo.com",
       "spot": "Keller Hall"
     },
     {
-      "rating": 1,
+      "score": 1,
       "owner": "jim@foo.com",
       "spot": "Keller Hall"
     },
     {
-      "rating": 2,
+      "score": 2,
       "owner": "sam@foo.com",
       "spot": "Keller Hall"
     },
     {
-      "rating": 1,
+      "score": 1,
       "owner": "bud@foo.com",
       "spot": "Keller Hall"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Keller Hall"
     },
     {
-      "rating": 0,
+      "score": 0,
       "owner": "default@foo.com",
       "spot": "Warrior Recreation Center"
     }

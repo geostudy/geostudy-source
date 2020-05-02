@@ -7,7 +7,7 @@ const Ratings = new Mongo.Collection('Ratings');
 
 /** Define a schema to specify the structure of each document in the collection. */
 const RatingsSchema = new SimpleSchema({
-  rating: Number,
+  score: Number,
   owner: String,
   spot: String,
 }, { tracker: Tracker });

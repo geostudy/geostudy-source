@@ -11,14 +11,14 @@ function addSpots({ image, name, location, description, owner }) {
   Spots.insert({ image, name, location, description, owner });
 }
 
-function addTags({ tag, spot }) {
-  console.log(`  Adding: ${tag}`);
-  Tags.insert({ tag, spot });
+function addTags({ name, spot }) {
+  console.log(`  Adding: ${name}`);
+  Tags.insert({ name, spot });
 }
 
-function addRatings({ rating, owner, spot }) {
-  console.log(`  Adding: ${spot} (${rating})`);
-  Ratings.insert({ rating, owner, spot });
+function addRatings({ score, owner, spot }) {
+  console.log(`  Adding: ${spot} (${score})`);
+  Ratings.insert({ score, owner, spot });
 }
 
 /** Initialize the collection if empty. */

@@ -35,7 +35,7 @@ class ListSpots extends React.Component {
           <Item.Group>
             {this.props.spots.slice((this.state.activePage - 1) * 5,
                 this.state.activePage * 5).map((spot, index) => <Spot key={index} Spots={Spots} spot={spot}
-                Tags={Tags} tag={this.props.tags} Ratings={Ratings} rating={this.props.ratings}/>)}
+                Tags={Tags} tags={this.props.tags} Ratings={Ratings} rating={this.props.ratings}/>)}
           </Item.Group>
           <hr/>
           <Container textAlign={'center'}>

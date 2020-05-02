@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 class Tag extends React.Component {
   render() {
     return (
-        console.log(this.props.tags)
+        ''
     );
   }
 }

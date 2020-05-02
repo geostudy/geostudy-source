@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button, Item, Rating } from 'semantic-ui-react';
+import Tag from '/imports/ui/components/Tag';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { withRouter, Link } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
+import { Tags } from '../../api/tag/Tags';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Spot extends React.Component {
@@ -23,7 +25,7 @@ class Spot extends React.Component {
             </Item.Description>
             <Item.Extra>
               <div className='spots-text'>
-                Tags: &nbsp; ();
+                Tags: &nbsp; <Tag Tags={Tags} tags={this.props.tags}/>
               </div>
             </Item.Extra>
             <Item.Extra>
@@ -53,7 +55,7 @@ class Spot extends React.Component {
   }
 
   getRating(nameGet) {
-    const infoGet = _.pluck(this.props.Ratings.find({ spot: nameGet }).fetch(), 'rating');
+    const infoGet = _.pluck(this.props.Ratings.find({ spot: nameGet }).fetch(), 'score');
     if (infoGet === undefined || infoGet.length === 0) {
       return '0';
     }
