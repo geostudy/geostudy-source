@@ -26,14 +26,13 @@ class AddRating extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     let fRef = null;
-    let score = 0;
     return (
             <AutoForm ref={ref => { fRef = ref; }} schema={RatingsSchema} onSubmit={data => this.submit(data, fRef)} >
               <Container>
               <Item.Extra>
                 <Rating className='ratingInterface' icon='star' defaultRating={0} maxRating={5}
                    onRate=
-                      {score = this.getRating}/>
+                      {this.getRating}/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
                 <HiddenField name='owner' value={this.props.owner}/>
@@ -46,7 +45,6 @@ class AddRating extends React.Component {
   }
 
   getRating = (event, data) => {
-    console.log(`Previous rating: ${this.score}`);
     console.log(data.rating);
     return (data.rating);
   }
