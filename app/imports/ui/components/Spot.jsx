@@ -7,6 +7,7 @@ import { _ } from 'meteor/underscore';
 import { withRouter, Link } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
 import { Tags } from '../../api/tag/Tags';
+import { Spots } from '../../api/spot/Spots';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Spot extends React.Component {
@@ -23,11 +24,7 @@ class Spot extends React.Component {
                 {this.props.spot.description}
               </p>
             </Item.Description>
-            <Item.Extra>
-              <div className='spots-text'>
-                Tags: &nbsp; <Tag Tags={Tags} tags={this.props.tags}/>
-              </div>
-            </Item.Extra>
+            <Tag Tags={Tags} tags={this.props.tags} Spots={Spots} spots={this.props.spot}/>
             <Item.Extra>
               <div className='spots-text'> Rating:
                 &nbsp; <Rating icon='star' maxRating={5} rating={this.getRating(this.props.spot.name)} disabled/> &nbsp;
