@@ -48,6 +48,15 @@ class Spot extends React.Component {
   }
 
   removeItem(spotId) {
+    const ratingSpot = _.where(this.props.rating, { spot: this.props.spot.name });
+    const ratingId = _.pluck(ratingSpot, '_id');
+    const tagSpot = _.filter(this.props.tags, (tag) => (_.contains(tag.spot, this.props.spot.name)));
+    const tagId = _.pluck(tagSpot, '_id');
+    const tagArray = _.pluck(tagSpot, 'spot');
+    const tagNewArray = _.map(tagArray, (array) => _.reject(array, (value) => value === this.props.spot.name));
+    const tagZip = _.zip(tagId, tagNewArray);
+    _.map(tagZip, (pair) => (this.props.Tags.update({ _id: pair[0] }, { $set: { spot: pair[1] } })));
+    _.map(ratingId, (id) => this.props.Ratings.remove(id));
     this.props.Spots.remove(spotId);
   }
 
