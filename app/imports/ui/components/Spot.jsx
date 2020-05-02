@@ -22,10 +22,15 @@ class Spot extends React.Component {
               </p>
             </Item.Description>
             <Item.Extra>
+              <div className='spots-text'>
+                Tags: &nbsp; ();
+              </div>
+            </Item.Extra>
+            <Item.Extra>
               <div className='spots-text'> Rating:
                 &nbsp; <Rating icon='star' maxRating={5} rating={this.getRating(this.props.spot.name)} disabled/> &nbsp;
-               ({this.getRatingCount(this.props.Ratings.find({ spot: this.props.spot.name }).count())})
-            </div>
+                (Total: {this.getRatingCount(this.props.Ratings.find({ spot: this.props.spot.name }).count())})
+              </div>
             </Item.Extra>
             {Roles.userIsInRole(Meteor.userId(), 'admin') || (Meteor.user().username === this.props.spot.owner) ? (
                 <Item.Extra>
@@ -54,8 +59,7 @@ class Spot extends React.Component {
     }
     const infoReduce = _.reduce(infoGet, (memo, num) => memo + num);
     const infoLength = (infoGet.length - 1);
-    const infoAverage = (infoReduce / infoLength);
-    return infoAverage;
+    return (infoReduce / infoLength);
   }
 
   getRatingCount(number) {
@@ -72,6 +76,8 @@ Spot.propTypes = {
   spot: PropTypes.object.isRequired,
   Ratings: PropTypes.object.isRequired,
   rating: PropTypes.array.isRequired,
+  Tags: PropTypes.object.isRequired,
+  tags: PropTypes.array.isRequired,
   currentUser: PropTypes.string,
 };
 

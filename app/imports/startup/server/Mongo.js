@@ -6,9 +6,9 @@ import { Ratings } from '../../api/rating/Ratings.js';
 /* eslint-disable no-console */
 
 /** Initialize the database with a default data document. */
-function addSpots({ image, name, location, description, rating, owner, tags }) {
+function addSpots({ image, name, location, description, owner }) {
   console.log(`  Adding: ${name} (${owner})`);
-  Spots.insert({ image, name, location, description, rating, owner, tags });
+  Spots.insert({ image, name, location, description, owner });
 }
 
 function addTags({ tag, spot }) {

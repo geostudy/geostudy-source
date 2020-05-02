@@ -22,9 +22,8 @@ class AddSpots extends React.Component {
   /** On submit, insert the data. */
   submit(data, formRef) {
     const { name, image, location, description } = data;
-    const rating = 0;
     const owner = Meteor.user().username;
-    Spots.insert({ image, name, location, description, rating, owner },
+    Spots.insert({ image, name, location, description, owner },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
