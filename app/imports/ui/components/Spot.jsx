@@ -31,6 +31,13 @@ class Spot extends React.Component {
                 (Total: {this.getRatingCount(this.props.Ratings.find({ spot: this.props.spot.name }).count())})
               </div>
             </Item.Extra>
+            {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+                <Item.Extra>
+                  <div className='spots-text'>
+                    Owner: &nbsp; { this.props.spot.owner }
+                  </div>
+                </Item.Extra>
+            ) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') || (Meteor.user().username === this.props.spot.owner) ? (
                 <Item.Extra>
                   <Link to={`/edit/${this.props.spot._id}`} className='spots-test'>Edit</Link>
