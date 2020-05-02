@@ -46,7 +46,8 @@ class AddRating extends React.Component {
 
   getRating = (event, data) => {
     console.log(data.rating);
-    return (data.rating);
+
+
   }
 }
 
