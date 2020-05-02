@@ -35,14 +35,6 @@ class Spot extends React.Component {
             <Item.Extra>
               <AddRating owner={Meteor.user().username} spot={this.props.spot.name}/>
             </Item.Extra>
-            <Item.Extra>
-              <Link to={`/edit/${this.props.spot._id}`} className='spots-test'>Edit</Link>
-            </Item.Extra>
-            <Item.Extra>
-              {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-                  <Button className="ui button" onClick={() => this.removeItem(this.props.spot._id)}>Delete</Button>
-              ) : ''}
-            </Item.Extra>
             {Roles.userIsInRole(Meteor.userId(), 'admin') || (Meteor.user().username === this.props.spot.owner) ? (
                 <Item.Extra>
                   <Link to={`/edit/${this.props.spot._id}`} className='spots-test'>Edit</Link>
