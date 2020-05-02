@@ -11,8 +11,8 @@ class AddRating extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { rating, owner, spot } = data;
-    Ratings.insert({ rating, owner, spot },
+    const { score, owner, spot } = data;
+    Ratings.insert({ score, owner, spot },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -26,17 +26,19 @@ class AddRating extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     let fRef = null;
+    let score = 0;
     return (
             <AutoForm ref={ref => { fRef = ref; }} schema={RatingsSchema} onSubmit={data => this.submit(data, fRef)} >
               <Container>
               <Item.Extra>
                 <Rating className='ratingInterface' icon='star' defaultRating={0} maxRating={5}
                    onRate=
-                      {this.getRating}/>
+                      {score = this.getRating}/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
                 <HiddenField name='owner' value={this.props.owner}/>
                 <HiddenField name='spot' value={this.props.spot}/>
+                <HiddenField name='score' value={this.score}/>
               </Item.Extra>
               </Container>
             </AutoForm>
@@ -44,8 +46,9 @@ class AddRating extends React.Component {
   }
 
   getRating = (event, data) => {
+    console.log(`Previous rating: ${this.score}`);
     console.log(data.rating);
-    return (<HiddenField name='rating' value={data.rating}/>);
+    return (data.rating);
   }
 }
 

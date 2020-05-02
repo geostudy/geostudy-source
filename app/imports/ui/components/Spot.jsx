@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { withRouter, Link } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
+import AddRating from './AddRating';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Spot extends React.Component {
@@ -26,6 +27,9 @@ class Spot extends React.Component {
                 &nbsp; <Rating icon='star' maxRating={5} rating={this.getRating(this.props.spot.name)} disabled/> &nbsp;
                ({this.getRatingCount(this.props.Ratings.find({ spot: this.props.spot.name }).count())})
             </div>
+            </Item.Extra>
+            <Item.Extra>
+              <AddRating owner={Meteor.user().username} spot={this.props.spot.name}/>
             </Item.Extra>
             <Item.Extra>
               <Link to={`/edit/${this.props.spot._id}`} className='spots-test'>Edit</Link>
