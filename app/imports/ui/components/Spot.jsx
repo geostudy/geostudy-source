@@ -27,13 +27,19 @@ class Spot extends React.Component {
             </Item.Description>
             <Tag Tags={Tags} tags={this.props.tags} Spots={Spots} spots={this.props.spot}/>
             <Item.Extra>
-              <div className='spots-text'> Rating:
+              <div className='spots-text'> Average Rating:
                 &nbsp; <Rating icon='star' maxRating={5} rating={this.getRating(this.props.spot.name)} disabled/> &nbsp;
-               (Total: {this.getRatingCount(this.props.Ratings.find({ spot: this.props.spot.name }).count())})
+               (Total Ratings: {this.getRatingCount(this.props.Ratings.find({ spot: this.props.spot.name }).count())})
             </div>
             </Item.Extra>
             <Item.Extra>
-              <AddRating owner={Meteor.user().username} spot={this.props.spot.name}/>
+              <AddRating user={Meteor.user().username} spotName={this.props.spot.name} Ratings={this.props.Ratings}
+                         score={_.where(_.where(this.props.rating,
+                             { spot: this.props.spot.name }),
+                             { owner: Meteor.user().username })}
+                         ratingCheck={_.contains(_.pluck(_.where(_.where(this.props.rating,
+                             { spot: this.props.spot.name }),
+                             { owner: Meteor.user().username }), 'owner'), Meteor.user().username)} />
             </Item.Extra>
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
                 <Item.Extra>

@@ -1,59 +1,62 @@
 import React from 'react';
 import { Item, Rating, Container } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, HiddenField, SubmitField } from 'uniforms-semantic';
-import swal from 'sweetalert';
+import { _ } from 'meteor/underscore';
 import PropTypes from 'prop-types';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
-import { Ratings, RatingsSchema } from '../../api/rating/Ratings';
 
 /** Renders the Page for adding a document. */
 class AddRating extends React.Component {
 
-  /** On submit, insert the data. */
-  submit(data, formRef) {
-    const { score, owner, spot } = data;
-    Ratings.insert({ score, owner, spot },
-      (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'Rating added successfully', 'success');
-          formRef.reset();
-        }
-      });
-  }
-
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
-    let fRef = null;
+    let defaultScore = 0;
+    const pluckScore = _.pluck(this.props.score, 'score');
+    if (pluckScore.length === 1) {
+      defaultScore = _.reduce(pluckScore, (memo, num) => num);
+    }
+    if (this.props.ratingCheck === true) {
+      return (
+          <Container>
+            <Item.Extra>
+              <div className='spots-text'>
+                User has Rated: &nbsp; <Rating className='ratingInterface' icon='star'
+                                               defaultRating={defaultScore} maxRating={5} onRate={this.submitRating}/>
+                &nbsp; (Click again to re-rate!)
+              </div>
+            </Item.Extra>
+          </Container>
+      );
+    }
     return (
-            <AutoForm ref={ref => { fRef = ref; }} schema={RatingsSchema} onSubmit={data => this.submit(data, fRef)} >
-              <Container>
-              <Item.Extra>
-                <Rating className='ratingInterface' icon='star' defaultRating={0} maxRating={5}
-                   onRate=
-                      {this.getRating}/>
-                <SubmitField value='Submit'/>
-                <ErrorsField/>
-                <HiddenField name='owner' value={this.props.owner}/>
-                <HiddenField name='spot' value={this.props.spot}/>
-                <HiddenField name='score' value={this.score}/>
-              </Item.Extra>
-              </Container>
-            </AutoForm>
+        <Container>
+          <Item.Extra>
+            <div className='spots-text'>
+              Tried this spot? <br/>
+              Let us know what you think! <br/>
+              <Rating className='ratingInterface' icon='star' defaultRating={1} maxRating={5}
+                      onRate={this.submitRating}/> &nbsp; (Click to rate!)
+            </div>
+          </Item.Extra>
+        </Container>
     );
   }
 
-  getRating = (event, data) => {
-    console.log(data.rating);
-
-
-  }
+  submitRating = (event, data) => {
+    if (this.props.ratingCheck === true) {
+      const pluckId = _.reduce(_.pluck(this.props.score, '_id'), (memo, num) => num);
+      this.props.Ratings.update({ _id: pluckId }, { $set: { score: data.rating } });
+    } else {
+      this.props.Ratings.insert({ score: data.rating, owner: this.props.user, spot: this.props.spotName });
+    }
+  };
 }
 
 AddRating.propTypes = {
-  owner: PropTypes.string.isRequired,
-  spot: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+  spotName: PropTypes.string.isRequired,
+  ratingCheck: PropTypes.bool.isRequired,
+  score: PropTypes.array.isRequired,
+  Ratings: PropTypes.object.isRequired,
 };
 
 export default AddRating;
