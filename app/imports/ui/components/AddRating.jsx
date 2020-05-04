@@ -1,6 +1,7 @@
 import React from 'react';
 import { Item, Rating, Container } from 'semantic-ui-react';
 import { _ } from 'meteor/underscore';
+import swal from 'sweetalert';
 import PropTypes from 'prop-types';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 
@@ -20,7 +21,7 @@ class AddRating extends React.Component {
             <Item.Extra>
               <div className='spots-text'>
                 User has Rated: &nbsp; <Rating className='ratingInterface' icon='star'
-                                               defaultRating={defaultScore} maxRating={5} onRate={this.submitRating}/>
+                defaultRating={defaultScore} maxRating={5} onRate={this.submitRating}/>
                 &nbsp; (Click again to re-rate!)
               </div>
             </Item.Extra>
@@ -44,11 +45,21 @@ class AddRating extends React.Component {
   submitRating = (event, data) => {
     if (this.props.ratingCheck === true) {
       const pluckId = _.reduce(_.pluck(this.props.score, '_id'), (memo, num) => num);
-      this.props.Ratings.update({ _id: pluckId }, { $set: { score: data.rating } });
+      this.props.Ratings.update({ _id: pluckId }, { $set: { score: data.rating } },
+          (error) => {
+            if (error) {
+              swal('Error', error.message, 'error');
+            }
+          });
     } else {
-      this.props.Ratings.insert({ score: data.rating, owner: this.props.user, spot: this.props.spotName });
+      this.props.Ratings.insert({ score: data.rating, owner: this.props.user, spot: this.props.spotName },
+          (error) => {
+            if (error) {
+              swal('Error', error.message, 'error');
+            }
+          });
     }
-  };
+  }
 }
 
 AddRating.propTypes = {

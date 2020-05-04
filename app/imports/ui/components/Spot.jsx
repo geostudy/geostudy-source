@@ -3,12 +3,14 @@ import { Button, Item, Rating } from 'semantic-ui-react';
 import Tag from '/imports/ui/components/Tag';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 import { _ } from 'meteor/underscore';
 import { withRouter, Link } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
 import AddRating from './AddRating';
 import { Tags } from '../../api/tag/Tags';
 import { Spots } from '../../api/spot/Spots';
+
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Spot extends React.Component {
@@ -72,7 +74,12 @@ class Spot extends React.Component {
     const tagArray = _.pluck(tagSpot, 'spot');
     const tagNewArray = _.map(tagArray, (array) => _.reject(array, (value) => value === this.props.spot.name));
     const tagZip = _.zip(tagId, tagNewArray);
-    _.map(tagZip, (pair) => (this.props.Tags.update({ _id: pair[0] }, { $set: { spot: pair[1] } })));
+    _.map(tagZip, (pair) => (this.props.Tags.update({ _id: pair[0] }, { $set: { spot: pair[1] } },
+        (error) => {
+          if (error) {
+            swal('Error', error.message, 'error');
+          }
+        })));
     _.map(ratingId, (id) => this.props.Ratings.remove(id));
     this.props.Spots.remove(spotId);
   }
