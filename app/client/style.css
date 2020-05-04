@@ -11,6 +11,14 @@
   color: #B9BBBE;
 }
 
+.ui.checkbox label {
+  color: white !important;
+}
+
+.ui.toggle.checkbox input:checked ~ label {
+  color: white !important;
+}
+
 .landing-background {
   background: #36393f !important;
 }

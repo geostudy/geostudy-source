@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Icon, Item, Header, Loader, Container, Pagination } from 'semantic-ui-react';
+import { Icon, Item, Header, Loader, Container, Pagination, Radio, Segment, Checkbox } from 'semantic-ui-react';
 import Spot from '/imports/ui/components/Spot';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -16,11 +16,16 @@ class ListSpots extends React.Component {
     this.state = {
       activePage: 1,
     };
+    this.sortState = { value: '' };
   }
 
   handleChange = (e, data) => {
     this.setState({ activePage: data.activePage });
   };
+
+  handleSortChange(event) {
+    this.setState({ value: event.value });
+  }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -32,6 +37,21 @@ class ListSpots extends React.Component {
     return (
         <Container>
           <Header as="h2" textAlign="center" inverted>Spots</Header>
+          <Container >
+            <div className='spots-text'>
+              <Segment className='sortAndFiter' inverted textAlign='center'>
+              Sort by: &nbsp;
+                <Radio label='Default' name='radioGroup'toggle defaultChecked />
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Radio label='Highest Rating' name='radioGroup' toggle />
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Radio label='Alphabetical' name='radioGroup' toggle />
+                <br/>
+                Filter: &nbsp;
+                {this.props.tags.map((tag, index) => <Checkbox key={index} label={tag.name} />)}
+              </Segment>
+            </div>
+          </Container>
           <Item.Group>
             {this.props.spots.slice((this.state.activePage - 1) * 5,
                 this.state.activePage * 5).map((spot, index) => <Spot key={index} Spots={Spots} spot={spot}
