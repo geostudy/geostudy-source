@@ -16,6 +16,7 @@ import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import Map from '../pages/Map';
 import ListSpots from '../pages/ListSpots';
+import SuggestTags from '../pages/SuggestTags';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -37,6 +38,7 @@ class App extends React.Component {
               <ProtectedRoute path="/edit" component={EditSpot}/>
               <ProtectedRoute path="/edit/:_id" component={EditSpot}/>
               <ProtectedRoute path="/signout" component={Signout}/>
+              <ProtectedRoute path="/suggestion" component={SuggestTags}/>
               <Route component={NotFound}/>
             </Switch>
             <Footer/>
