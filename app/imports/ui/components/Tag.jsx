@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
-import { Item } from 'semantic-ui-react';
+import { Item, Label } from 'semantic-ui-react';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Tag extends React.Component {
@@ -21,7 +21,7 @@ class Tag extends React.Component {
   }
 
   listTags(names) {
-    return _.map(names, (name) => (`[ ${name} ]\u00A0\u00A0\u00A0`));
+    return _.map(names, (name) => <Label size='tiny' as='a' tag color='grey'>{name}</Label>);
   }
 }
 

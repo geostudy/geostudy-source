@@ -17,6 +17,7 @@ import Signout from '../pages/Signout';
 import Map from '../pages/Map';
 import ListSpots from '../pages/ListSpots';
 import SuggestTags from '../pages/SuggestTags';
+import TagsAdmin from '../pages/TagsAdmin';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -39,6 +40,7 @@ class App extends React.Component {
               <ProtectedRoute path="/edit/:_id" component={EditSpot}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <ProtectedRoute path="/suggestion" component={SuggestTags}/>
+              <AdminProtectedRoute path="/admin" component={TagsAdmin}/>
               <Route component={NotFound}/>
             </Switch>
             <Footer/>
