@@ -31,8 +31,8 @@ class ListSpots extends React.Component {
   renderPage() {
     return (
         <Container>
-          <Header as="h2" textAlign="center" inverted>Spots</Header>
-          <Item.Group>
+          <Header as="h2" textAlign="center" inverted>View Study Spots</Header>
+          <Item.Group divided>
             {this.props.spots.slice((this.state.activePage - 1) * 5,
                 this.state.activePage * 5).map((spot, index) => <Spot key={index} Spots={Spots} spot={spot}
                 Tags={Tags} tags={this.props.tags} Ratings={Ratings} rating={this.props.ratings}/>)}

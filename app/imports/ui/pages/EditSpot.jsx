@@ -41,7 +41,7 @@ class EditSpot extends React.Component {
     return (
         <Grid container centered>
           <Grid.Row>
-            <Header as="h2" textAlign="center" inverted>Add Spot</Header>
+            <Header as="h2" textAlign="center" inverted>Edit Study Spot</Header>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={8}>
@@ -49,11 +49,11 @@ class EditSpot extends React.Component {
                 fRef = ref;
               }} schema={formSchema} onSubmit={data => this.submit(data, fRef)}>
                 <Segment>
-                  <TextField name='name'/>
+                  <TextField name='name' label='Name of Study Spot'/>
                   <p>Upload your image to <a href="https://imgur.com/">Imgur</a> and paste the link here!</p>
-                  <TextField name='image'/>
-                  <TextField name='location'/>
-                  <LongTextField name='description'/>
+                  <TextField name='image' label='Picture of Study Spot'/>
+                  <TextField name='location' label='Location/Address of Study Spot'/>
+                  <LongTextField name='description' label='Describe the Study Spot'/>
                   <SubmitField value='Submit'/>
                   <ErrorsField/>
                 </Segment>
