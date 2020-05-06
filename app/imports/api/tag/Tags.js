@@ -1,6 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
-import { Tracker } from 'meteor/tracker';
+import { Tags } from '../../api/tag/Tags';
 
 /** Define a Mongo collection to hold the data. */
 const Tags = new Mongo.Collection('Tags');
@@ -13,8 +13,8 @@ const TagsSchema = new SimpleSchema({
     optional: true,
     defaultValue: ['test'],
   },
-  'spot.$': String,
-}, { tracker: Tracker });
+  'spot.$': { type: String, allowedValues: _.pluck(Tags.find().fetch(), 'name')},
+},
 
 /** Attach this schema to the collection. */
 Tags.attachSchema(TagsSchema);
