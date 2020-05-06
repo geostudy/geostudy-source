@@ -2,10 +2,10 @@ import React from 'react';
 import { Button, Item } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
+import { _ } from 'meteor/underscore';
 import swal from 'sweetalert';
 import { Roles } from 'meteor/alanning:roles';
 import { Tags } from '../../api/tag/Tags';
-import { Suggestions } from '../../api/suggestion/Suggestions';
 
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -37,8 +37,10 @@ class Suggestion extends React.Component {
   }
 
   addSuggestion(suggestionId, suggestionName) {
-    const emptyArray = [];
-    Tags.insert({ suggestionName, emptyArray },
+    const name = _.reduce(suggestionName, (memo, num) => (memo + num));
+    const testArray = [];
+    console.log(name);
+    Tags.insert({ name, testArray },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
