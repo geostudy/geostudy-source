@@ -4,6 +4,8 @@ import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import { Roles } from 'meteor/alanning:roles';
+import { Tags } from '../../api/tag/Tags';
+import { Suggestions } from '../../api/suggestion/Suggestions';
 
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -36,15 +38,15 @@ class Suggestion extends React.Component {
 
   addSuggestion(suggestionId, suggestionName) {
     const emptyArray = [];
-    // this.props.Tags.insert({ suggestionName, emptyArray },
-    //     (error) => {
-    //       if (error) {
-    //         swal('Error', error.message, 'error');
-    //       } else {
-    //         swal('Success', 'Suggestion added successfully', 'success');
-    //         this.props.Suggestions.remove(suggestionId);
-    //       }
-    //     });
+    Tags.insert({ suggestionName, emptyArray },
+        (error) => {
+          if (error) {
+            swal('Error', error.message, 'error');
+          } else {
+            swal('Success', 'Suggestion added successfully', 'success');
+            this.props.Suggestions.remove(suggestionId);
+          }
+        });
   }
 
   rejectSuggestion(suggestionId) {

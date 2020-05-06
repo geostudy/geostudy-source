@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Item, Rating } from 'semantic-ui-react';
+import { Button, Item, Rating, Divider } from 'semantic-ui-react';
 import Tag from '/imports/ui/components/Tag';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
@@ -18,9 +18,16 @@ class Spot extends React.Component {
     return (
         <Item>
           <Item.Image src={this.props.spot.image}/>
-
           <Item.Content>
-            <Item.Header as='h3'><p className='spots-text'>{this.props.spot.name}</p></Item.Header>
+            <Divider inverted/>
+            {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+                <Button floated='right' size='small' negative className="ui button"
+                        onClick={() => this.removeItem(this.props.spot._id)} circular icon='trash alternate'>
+                </Button>
+            ) : ''}
+            <Item.Header as='h3'>
+              <p className='spots-text'>{this.props.spot.name}</p>
+            </Item.Header>
             <Item.Meta><p className='spots-subtext'>{this.props.spot.location}</p></Item.Meta>
             <Item.Description>
               <p className='spots-text'>
@@ -43,24 +50,21 @@ class Spot extends React.Component {
                              { spot: this.props.spot.name }),
                              { owner: Meteor.user().username }), 'owner'), Meteor.user().username)} />
             </Item.Extra>
+            <Item.Extra>
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-                <Item.Extra>
                   <div className='spots-text'>
                     Owner: &nbsp; { this.props.spot.owner }
                   </div>
-                </Item.Extra>
             ) : ''}
-            {Roles.userIsInRole(Meteor.userId(), 'admin') || (Meteor.user().username === this.props.spot.owner) ? (
-                <Item.Extra>
-                  <Link to={`/edit/${this.props.spot._id}`} className='spots-test'>Edit</Link>
-                </Item.Extra>
-            ) : ''}
-            {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-                <Item.Extra>
-                  <Button className="ui button"
-                          onClick={() => this.removeItem(this.props.spot._id)}>Delete</Button>
-                </Item.Extra>
-            ) : ''}
+              {Roles.userIsInRole(Meteor.userId(), 'admin') || (Meteor.user().username === this.props.spot.owner) ? (
+                  <div className='spots-text'> See something wrong? &nbsp;
+                    <Link floated='left' to={`/edit/${this.props.spot._id}`} className='spots-test'>
+                      Edit this spot
+                    </Link>
+                  </div>
+              ) : ''}
+            </Item.Extra>
+            <Divider inverted/>
           </Item.Content>
         </Item>
     );

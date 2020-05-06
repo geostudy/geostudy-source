@@ -59,7 +59,7 @@ class SuggestTags extends React.Component {
                 fRef = ref;
               }} schema={SuggestionsSchema} onSubmit={data => this.submit(data, fRef)}>
                 <Segment>
-                  <TextField name='name'/>
+                  <TextField name='name' label='Name of the new tag'/>
                   <LongTextField name='description' label='Please describe why we should add this as a tag'/>
                   <HiddenField name='owner' value={Meteor.user().username}/>
                   <SubmitField value='Submit'/>
