@@ -21,7 +21,7 @@ class Tag extends React.Component {
   }
 
   listTags(names) {
-    return _.map(names, (name) => <Label size='tiny' as='a' tag color='grey'>{name}</Label>);
+    return _.map(names, (name) => <Label size='tiny' tag color='grey'>{name}</Label>);
   }
 }
 
