@@ -14,14 +14,11 @@ class Tag extends React.Component {
         <Item.Extra>
           <br/>
           <div className='spots-text'>
-            Tags:&nbsp;{ this.listTags(spotName) }
+            Tags:&nbsp;{ _.map(spotName, (name, index) => <Label key={index}
+            size='tiny' tag color='grey'>{name}</Label>) }
           </div>
         </Item.Extra>
     );
-  }
-
-  listTags(names) {
-    return _.map(names, (name) => <Label size='tiny' tag color='grey'>{name}</Label>);
   }
 }
 
