@@ -29,11 +29,13 @@ class MySpots extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
+    const ownedSpots = Spots.find({ owner: Meteor.user().username }).fetch();
+
     return (
         <Container>
           <Header as="h2" textAlign="center" inverted>View Your Study Spots</Header>
           <Item.Group divided>
-            {this.props.spots.filter(spots => spots.owner === Meteor.user().username).slice((this.state.activePage - 1) * 5,
+            {ownedSpots.slice((this.state.activePage - 1) * 5,
                 this.state.activePage * 5).map((spot, index) => <Spot key={index} Spots={Spots} spot={spot}
                 Tags={Tags} tags={this.props.tags} Ratings={Ratings} rating={this.props.ratings}/>)}
           </Item.Group>
@@ -46,7 +48,7 @@ class MySpots extends React.Component {
                 lastItem={{ content: <Icon name='angle double right'/>, icon: true }}
                 prevItem={{ content: <Icon name='angle left'/>, icon: true }}
                 nextItem={{ content: <Icon name='angle right'/>, icon: true }}
-                totalPages={Math.ceil(this.props.spots.length / 5)}
+                totalPages={Math.ceil(ownedSpots.length / 5)}
                 onPageChange={this.handleChange}
             />
           </Container>
