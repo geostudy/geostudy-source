@@ -19,10 +19,8 @@ class EditSpot extends React.Component {
   submit(data) {
     const { name, image, location, description, tags, _id } = data;
     const owner = Meteor.user().username;
-    const tagId = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags, { name: tag }))), true), '_id');
-    const tagArray = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags, { name: tag }))), true), 'spot');
-    _.map(tagArray, (array) => array.push(name));
-    const tagZip = _.zip(tagId, tagArray);
+    const removeArray = _.difference(this.props.doc.tags, tags);
+    const addArray = _.difference(tags, this.props.doc.tags);
     Spots.update(_id, { $set: { image, name, location, description, owner } },
         (error) => {
           if (error) {
@@ -31,12 +29,38 @@ class EditSpot extends React.Component {
             swal('Success', 'Item updated successfully', 'success');
           }
         });
-    _.map(tagZip, (pair) => (Tags.update({ _id: pair[0] }, { $set: { spot: pair[1] } },
-        (error) => {
-          if (error) {
-            swal('Error', error.message, 'error');
-          }
-        })));
+    if (_.isEqual(tags, this.props.doc.tags) === false) {
+      if (_.isEqual(removeArray, []) === false) {
+        const removeTagObject = _.flatten(_.map(removeArray, (tag) => (_.where(this.props.tags,
+            { name: tag }))), true);
+        const removeTagId = _.pluck(removeTagObject, '_id');
+        const removeTagArray = _.pluck(removeTagObject, 'spot');
+        const removeTagNewArray = _.map(removeTagArray, (array) => _.reject(array,
+            (value) => value === this.props.doc.name));
+        const removeTagZip = _.zip(removeTagId, removeTagNewArray);
+        _.map(removeTagZip, (pair) => (Tags.update({ _id: pair[0] }, { $set: { spot: pair[1] } },
+            (error) => {
+              if (error) {
+                swal('Error', error.message, 'error');
+              }
+            })));
+      }
+
+      if (_.isEqual(addArray, []) === false) {
+        const addTagId = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags,
+            { name: tag }))), true), '_id');
+        const addTagArray = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags,
+            { name: tag }))), true), 'spot');
+        _.map(addTagArray, (array) => array.push(name));
+        const addTagZip = _.zip(addTagId, addTagArray);
+        _.map(addTagZip, (pair) => (Tags.update({ _id: pair[0] }, { $set: { spot: pair[1] } },
+            (error) => {
+              if (error) {
+                swal('Error', error.message, 'error');
+              }
+            })));
+      }
+    }
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
