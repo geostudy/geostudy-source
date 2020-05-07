@@ -7,7 +7,7 @@ import { Item, Label } from 'semantic-ui-react';
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Tag extends React.Component {
   render() {
-    const spotTags = _.filter(this.props.Tags.find().fetch(), (tag) => (_.contains(tag.spot, this.props.spots.name)));
+    const spotTags = _.filter(this.props.Tags.find().fetch(), (tag) => (_.contains(tag.spotId, this.props.spots._id)));
     const spotName = _.pluck(spotTags, 'name');
 
     return (

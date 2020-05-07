@@ -19,10 +19,6 @@ class AddSpots extends React.Component {
   submit(data, formRef) {
     const { name, image, location, description, tags } = data;
     const owner = Meteor.user().username;
-    const tagId = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags, { name: tag }))), true), '_id');
-    const tagArray = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags, { name: tag }))), true), 'spot');
-    _.map(tagArray, (array) => array.push(name));
-    const tagZip = _.zip(tagId, tagArray);
     Spots.insert({ image, name, location, description, owner },
         (error) => {
           if (error) {
@@ -32,7 +28,13 @@ class AddSpots extends React.Component {
             formRef.reset();
           }
         });
-    _.map(tagZip, (pair) => (Tags.update({ _id: pair[0] }, { $set: { spot: pair[1] } },
+    const tagId = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags, { name: tag }))), true), '_id');
+    const tagArray = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags,
+        { name: tag }))), true), 'spotId');
+    _.map(tagArray, (array) => array.push(_.reduce(_.pluck(Spots.find({ name: name }).fetch(),
+        '_id'), (memo, num) => (memo + num))));
+    const tagZip = _.zip(tagId, tagArray);
+    _.map(tagZip, (pair) => (Tags.update({ _id: pair[0] }, { $set: { spotId: pair[1] } },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');

@@ -37,17 +37,17 @@ class Spot extends React.Component {
             <Tag Tags={Tags} tags={this.props.tags} Spots={Spots} spots={this.props.spot}/>
             <Item.Extra>
               <div className='spots-text'> Average Rating:
-                &nbsp; <Rating icon='star' maxRating={5} rating={this.getRating(this.props.spot.name)} disabled/> &nbsp;
-               (Total Ratings: {this.getRatingCount(this.props.Ratings.find({ spot: this.props.spot.name }).count())})
+                &nbsp; <Rating icon='star' maxRating={5} rating={this.getRating(this.props.spot._id)} disabled/> &nbsp;
+               (Total Ratings: {this.getRatingCount(this.props.Ratings.find({ spotId: this.props.spot._id }).count())})
             </div>
             </Item.Extra>
             <Item.Extra>
-              <AddRating user={Meteor.user().username} spotName={this.props.spot.name} Ratings={this.props.Ratings}
+              <AddRating user={Meteor.user().username} spotId={this.props.spot._id} Ratings={this.props.Ratings}
                          score={_.where(_.where(this.props.rating,
-                             { spot: this.props.spot.name }),
+                             { spotId: this.props.spot._id }),
                              { owner: Meteor.user().username })}
                          ratingCheck={_.contains(_.pluck(_.where(_.where(this.props.rating,
-                             { spot: this.props.spot.name }),
+                             { spotId: this.props.spot._id }),
                              { owner: Meteor.user().username }), 'owner'), Meteor.user().username)} />
             </Item.Extra>
             <Item.Extra>
@@ -71,14 +71,14 @@ class Spot extends React.Component {
   }
 
   removeItem(spotId) {
-    const ratingSpot = _.where(this.props.rating, { spot: this.props.spot.name });
+    const ratingSpot = _.where(this.props.rating, { spotId: this.props.spot._id });
     const ratingId = _.pluck(ratingSpot, '_id');
-    const tagSpot = _.filter(this.props.tags, (tag) => (_.contains(tag.spot, this.props.spot.name)));
+    const tagSpot = _.filter(this.props.tags, (tag) => (_.contains(tag.spotId, this.props.spot._id)));
     const tagId = _.pluck(tagSpot, '_id');
-    const tagArray = _.pluck(tagSpot, 'spot');
-    const tagNewArray = _.map(tagArray, (array) => _.reject(array, (value) => value === this.props.spot.name));
+    const tagArray = _.pluck(tagSpot, 'spotId');
+    const tagNewArray = _.map(tagArray, (array) => _.reject(array, (value) => value === this.props.spot._id));
     const tagZip = _.zip(tagId, tagNewArray);
-    _.map(tagZip, (pair) => (this.props.Tags.update({ _id: pair[0] }, { $set: { spot: pair[1] } },
+    _.map(tagZip, (pair) => (this.props.Tags.update({ _id: pair[0] }, { $set: { spotId: pair[1] } },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
@@ -88,11 +88,11 @@ class Spot extends React.Component {
     this.props.Spots.remove(spotId);
   }
 
-  getRating(nameGet) {
-    if (this.props.Ratings.find({ spot: nameGet }).count() <= 0) {
+  getRating(idGet) {
+    if (this.props.Ratings.find({ spotId: idGet }).count() <= 0) {
       return 0;
     }
-    const infoGet = _.pluck(this.props.Ratings.find({ spot: nameGet }).fetch(), 'score');
+    const infoGet = _.pluck(this.props.Ratings.find({ spotId: idGet }).fetch(), 'score');
     const infoReduce = _.reduce(infoGet, (memo, num) => memo + num);
     const infoLength = (infoGet.length);
     return (infoReduce / infoLength);

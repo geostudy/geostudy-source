@@ -34,11 +34,11 @@ class EditSpot extends React.Component {
         const removeTagObject = _.flatten(_.map(removeArray, (tag) => (_.where(this.props.tags,
             { name: tag }))), true);
         const removeTagId = _.pluck(removeTagObject, '_id');
-        const removeTagArray = _.pluck(removeTagObject, 'spot');
+        const removeTagArray = _.pluck(removeTagObject, 'spotId');
         const removeTagNewArray = _.map(removeTagArray, (array) => _.reject(array,
-            (value) => value === this.props.doc.name));
+            (value) => value === this.props.doc._id));
         const removeTagZip = _.zip(removeTagId, removeTagNewArray);
-        _.map(removeTagZip, (pair) => (Tags.update({ _id: pair[0] }, { $set: { spot: pair[1] } },
+        _.map(removeTagZip, (pair) => (Tags.update({ _id: pair[0] }, { $set: { spotId: pair[1] } },
             (error) => {
               if (error) {
                 swal('Error', error.message, 'error');
@@ -50,10 +50,10 @@ class EditSpot extends React.Component {
         const addTagId = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags,
             { name: tag }))), true), '_id');
         const addTagArray = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags,
-            { name: tag }))), true), 'spot');
-        _.map(addTagArray, (array) => array.push(name));
+            { name: tag }))), true), 'spotId');
+        _.map(addTagArray, (array) => array.push(_id));
         const addTagZip = _.zip(addTagId, addTagArray);
-        _.map(addTagZip, (pair) => (Tags.update({ _id: pair[0] }, { $set: { spot: pair[1] } },
+        _.map(addTagZip, (pair) => (Tags.update({ _id: pair[0] }, { $set: { spotId: pair[1] } },
             (error) => {
               if (error) {
                 swal('Error', error.message, 'error');
@@ -66,7 +66,7 @@ class EditSpot extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     const allowedTags = _.pluck(this.props.tags, 'name');
-    const tagSpot = _.filter(this.props.tags, (tag) => (_.contains(tag.spot, this.props.doc.name)));
+    const tagSpot = _.filter(this.props.tags, (tag) => (_.contains(tag.spotId, this.props.doc._id)));
     const tagName = _.pluck(tagSpot, 'name');
     const newDoc = this.props.doc;
     newDoc.tags = tagName;

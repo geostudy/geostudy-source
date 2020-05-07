@@ -8,12 +8,12 @@ const Tags = new Mongo.Collection('Tags');
 /** Define a schema to specify the structure of each document in the collection. */
 const TagsSchema = new SimpleSchema({
   name: String,
-  spot: {
+  spotId: {
     type: Array,
     optional: true,
     defaultValue: ['test'],
   },
-  'spot.$': { type: String },
+  'spotId.$': { type: String },
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

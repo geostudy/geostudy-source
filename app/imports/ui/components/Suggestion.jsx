@@ -39,7 +39,6 @@ class Suggestion extends React.Component {
   addSuggestion(suggestionId, suggestionName) {
     const name = _.reduce(suggestionName, (memo, num) => (memo + num));
     const testArray = [];
-    console.log(name);
     Tags.insert({ name, testArray },
         (error) => {
           if (error) {
