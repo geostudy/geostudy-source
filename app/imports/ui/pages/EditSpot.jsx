@@ -4,39 +4,31 @@ import { Grid, Segment, Header } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import swal from 'sweetalert';
+import { _ } from 'meteor/underscore';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
 import SimpleSchema from 'simpl-schema';
 import { Spots } from '../../api/spot/Spots';
 import { Tags } from '../../api/tag/Tags';
-import { withTracker } from 'meteor/react-meteor-data';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
-import PropTypes from 'prop-types';
-
-/** Create a schema to specify the structure of the data to appear in the form. */
-const formSchema = new SimpleSchema({
-  image: String,
-  name: String,
-  location: String,
-  description: String,
-});
 
 /** Renders the Page for adding a document. */
 class EditSpot extends React.Component {
 
   /** On submit, insert the data. */
-  submit(data, formRef) {
-    const { name, image, location, description, tags } = data;
+  submit(data) {
+    const { name, image, location, description, tags, _id } = data;
     const owner = Meteor.user().username;
     const tagId = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags, { name: tag }))), true), '_id');
     const tagArray = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags, { name: tag }))), true), 'spot');
     _.map(tagArray, (array) => array.push(name));
     const tagZip = _.zip(tagId, tagArray);
-    Spots.insert({ image, name, location, description, owner },
+    Spots.update(_id, { $set: { image, name, location, description, owner } },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
           } else {
-            swal('Success', 'Item added successfully', 'success');
-            formRef.reset();
+            swal('Success', 'Item updated successfully', 'success');
           }
         });
     _.map(tagZip, (pair) => (Tags.update({ _id: pair[0] }, { $set: { spot: pair[1] } },
@@ -49,9 +41,11 @@ class EditSpot extends React.Component {
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
-    let fRef = null;
-
     const allowedTags = _.pluck(this.props.tags, 'name');
+    const tagSpot = _.filter(this.props.tags, (tag) => (_.contains(tag.spot, this.props.doc.name)));
+    const tagName = _.pluck(tagSpot, 'name');
+    const newDoc = this.props.doc;
+    newDoc.tags = tagName;
     const formSchema = new SimpleSchema({
       image: String,
       name: String,
@@ -68,9 +62,7 @@ class EditSpot extends React.Component {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={14}>
-              <AutoForm ref={ref => {
-                fRef = ref;
-              }} schema={formSchema} onSubmit={data => this.submit(data, fRef)}>
+              <AutoForm schema={formSchema} onSubmit={data => this.submit(data)} model={newDoc}>
                 <Segment>
                   <TextField name='name' label='Name of Study Spot'/>
                   <p>Upload your image to <a href="https://imgur.com/">Imgur</a> and paste the link here!</p>
@@ -92,16 +84,24 @@ class EditSpot extends React.Component {
 }
 
 EditSpot.propTypes = {
+  doc: PropTypes.object,
+  spot: PropTypes.array.isRequired,
+  model: PropTypes.object,
   tags: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
-export default withTracker(
-    () => {
-      // Get access to Stuff documents.
-      const subscription = Meteor.subscribe('Tags');
-      return {
-        tags: Tags.find({}).fetch(),
-        ready: (subscription.ready()),
-      };
-    },
-)(EditSpot);
+
+export default withTracker(({ match }) => {
+  // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
+  const documentId = match.params._id;
+  // Get access to Stuff documents.
+  const subscription = Meteor.subscribe('Spots');
+  const subscription2 = Meteor.subscribe('Tags');
+
+  return {
+    doc: Spots.findOne(documentId),
+    tags: Tags.find().fetch(),
+    spot: Spots.find().fetch(),
+    ready: (subscription.ready() && subscription2.ready()),
+  };
+})(EditSpot);

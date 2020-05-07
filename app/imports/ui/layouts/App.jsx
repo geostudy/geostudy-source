@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import 'semantic-ui-css/semantic.css';
@@ -36,7 +36,6 @@ class App extends React.Component {
               <ProtectedRoute path="/home" component={Home}/>
               <ProtectedRoute path="/spots" component={ListSpots}/>
               <ProtectedRoute path="/add" component={AddSpots}/>
-              <ProtectedRoute path="/edit" component={EditSpot}/>
               <ProtectedRoute path="/edit/:_id" component={EditSpot}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <ProtectedRoute path="/suggestion" component={SuggestTags}/>
