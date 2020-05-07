@@ -14,7 +14,7 @@ import Home from '../pages/Home';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
-import Map from '../pages/Map';
+import MySpots from '../pages/MySpots';
 import ListSpots from '../pages/ListSpots';
 import SuggestTags from '../pages/SuggestTags';
 import TagsAdmin from '../pages/TagsAdmin';
@@ -32,7 +32,7 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
-              <Route path="/map" component={Map}/>
+              <ProtectedRoute path="/mine" component={MySpots}/>
               <ProtectedRoute path="/home" component={Home}/>
               <ProtectedRoute path="/spots" component={ListSpots}/>
               <ProtectedRoute path="/add" component={AddSpots}/>
