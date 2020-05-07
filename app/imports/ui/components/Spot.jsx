@@ -89,20 +89,17 @@ class Spot extends React.Component {
   }
 
   getRating(nameGet) {
-    const infoGet = _.pluck(this.props.Ratings.find({ spot: nameGet }).fetch(), 'score');
-    if (infoGet === undefined || infoGet.length === 0) {
-      return '0';
+    if (this.props.Ratings.find({ spot: nameGet }).count() <= 0) {
+      return 0;
     }
+    const infoGet = _.pluck(this.props.Ratings.find({ spot: nameGet }).fetch(), 'score');
     const infoReduce = _.reduce(infoGet, (memo, num) => memo + num);
-    const infoLength = (infoGet.length - 1);
+    const infoLength = (infoGet.length);
     return (infoReduce / infoLength);
   }
 
   getRatingCount(number) {
-    if (number <= 0) {
-      return 0;
-    }
-    return number - 1;
+    return number;
   }
 }
 
