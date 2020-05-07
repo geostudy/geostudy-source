@@ -8,24 +8,21 @@ import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import SimpleSchema from 'simpl-schema';
 import { withTracker } from 'meteor/react-meteor-data';
+import MultiSelectField from '../forms/controllers/MultiSelectField';
 import { Spots } from '../../api/spot/Spots';
 import { Tags } from '../../api/tag/Tags';
-
-/** Create a schema to specify the structure of the data to appear in the form. */
-const formSchema = new SimpleSchema({
-  image: String,
-  name: String,
-  location: String,
-  description: String,
-});
 
 /** Renders the Page for adding a document. */
 class AddSpots extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { name, image, location, description } = data;
+    const { name, image, location, description, tags } = data;
     const owner = Meteor.user().username;
+    const tagId = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags, { name: tag }))), true), '_id');
+    const tagArray = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags, { name: tag }))), true), 'spot');
+    _.map(tagArray, (array) => array.push(name));
+    const tagZip = _.zip(tagId, tagArray);
     Spots.insert({ image, name, location, description, owner },
         (error) => {
           if (error) {
@@ -35,11 +32,28 @@ class AddSpots extends React.Component {
             formRef.reset();
           }
         });
+    _.map(tagZip, (pair) => (Tags.update({ _id: pair[0] }, { $set: { spot: pair[1] } },
+        (error) => {
+          if (error) {
+            swal('Error', error.message, 'error');
+          }
+        })));
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     let fRef = null;
+
+    const allowedTags = _.pluck(this.props.tags, 'name');
+    const formSchema = new SimpleSchema({
+      image: String,
+      name: String,
+      location: String,
+      description: String,
+      tags: { type: Array, optional: true },
+      'tags.$': { type: String, allowedValues: allowedTags },
+    });
+
     return (
         <Grid container centered>
           <Grid.Row>
@@ -56,7 +70,7 @@ class AddSpots extends React.Component {
                   <TextField name='image' label='Picture of Study Spot'/>
                   <TextField name='location' label='Location/Address of Study Spot'/>
                   <LongTextField name='description' label='Describe the Study Spot'/>
-                  {console.log(this.props.tags)}
+                  <MultiSelectField name='tags' label='Add tags that apply to the Study Spot'/>
                   <SubmitField value='Submit'/>
                   <ErrorsField/>
                 </Segment>
@@ -70,9 +84,7 @@ class AddSpots extends React.Component {
   }
 }
 
-AddSpots
-    .propTypes = {
-  Tags: PropTypes.object.isRequired,
+AddSpots.propTypes = {
   tags: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
