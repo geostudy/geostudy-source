@@ -1,7 +1,8 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Icon, Item, Header, Loader, Container, Pagination, Radio, Segment, Checkbox } from 'semantic-ui-react';
+import { Icon, Item, Header, Loader, Container, Pagination, Button, Segment } from 'semantic-ui-react';
 import Spot from '/imports/ui/components/Spot';
+import SortFilter from '/imports/ui/components/SortFilter';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Spots } from '../../api/spot/Spots';
@@ -9,6 +10,7 @@ import { Ratings } from '../../api/rating/Ratings';
 import { Tags } from '../../api/tag/Tags';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+
 class ListSpots extends React.Component {
 
   constructor(props) {
@@ -32,13 +34,24 @@ class ListSpots extends React.Component {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
+  sortCallback = (newSpots) => {
+    return newSpots;
+  }
+
   /** Render the page once subscriptions have been received. */
   renderPage() {
+    const spotsData = this.props.spots;
     return (
         <Container>
           <Header as="h2" textAlign="center" inverted>View Study Spots</Header>
+          <Segment className='sortAndFilter' inverted textAlign='center'>
+            <div className='spots-text'>
+                <SortFilter Spots={Spots} Tags={Tags} spot={spotsData} tags={this.props.tags}
+                            spotsCallback={this.sortCallback}/>
+            </div>
+          </Segment>
           <Item.Group divided>
-            {this.props.spots.slice((this.state.activePage - 1) * 5,
+            {spotsData.slice((this.state.activePage - 1) * 5,
                 this.state.activePage * 5).map((spot, index) => <Spot key={index} Spots={Spots} spot={spot}
                 Tags={Tags} tags={this.props.tags} Ratings={Ratings} rating={this.props.ratings}/>)}
           </Item.Group>
