@@ -34,7 +34,7 @@ class AddRating extends React.Component {
             <div className='spots-text'>
               Tried this spot? <br/>
               Let us know what you think! <br/>
-              <Rating className='ratingInterface' icon='star' defaultRating={1} maxRating={5}
+              <Rating className='ratingInterface' icon='star' defaultRating={0} maxRating={5}
                       onRate={this.submitRating}/> &nbsp; (Click to rate!)
             </div>
           </Item.Extra>
@@ -52,7 +52,7 @@ class AddRating extends React.Component {
             }
           });
     } else {
-      this.props.Ratings.insert({ score: data.rating, owner: this.props.user, spot: this.props.spotName },
+      this.props.Ratings.insert({ score: data.rating, owner: this.props.user, spotId: this.props.spotId },
           (error) => {
             if (error) {
               swal('Error', error.message, 'error');
@@ -64,7 +64,7 @@ class AddRating extends React.Component {
 
 AddRating.propTypes = {
   user: PropTypes.string.isRequired,
-  spotName: PropTypes.string.isRequired,
+  spotId: PropTypes.string.isRequired,
   ratingCheck: PropTypes.bool.isRequired,
   score: PropTypes.array.isRequired,
   Ratings: PropTypes.object.isRequired,

@@ -3,25 +3,21 @@ import { Meteor } from 'meteor/meteor';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
+import { _ } from 'meteor/underscore';
+import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import SimpleSchema from 'simpl-schema';
-import { GoogleMap, withGoogleMap, withScriptjs } from 'react-google-maps';
+import { withTracker } from 'meteor/react-meteor-data';
+import MultiSelectField from '../forms/controllers/MultiSelectField';
 import { Spots } from '../../api/spot/Spots';
-
-/** Create a schema to specify the structure of the data to appear in the form. */
-const formSchema = new SimpleSchema({
-  image: String,
-  name: String,
-  location: String,
-  description: String,
-});
+import { Tags } from '../../api/tag/Tags';
 
 /** Renders the Page for adding a document. */
 class AddSpots extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { name, image, location, description } = data;
+    const { name, image, location, description, tags } = data;
     const owner = Meteor.user().username;
     Spots.insert({ image, name, location, description, owner },
         (error) => {
@@ -32,42 +28,57 @@ class AddSpots extends React.Component {
             formRef.reset();
           }
         });
+    const tagId = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags, { name: tag }))), true), '_id');
+    const tagArray = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags,
+        { name: tag }))), true), 'spotId');
+    _.map(tagArray, (array) => array.push(_.reduce(_.pluck(Spots.find({ name: name }).fetch(),
+        '_id'), (memo, num) => (memo + num))));
+    const tagZip = _.zip(tagId, tagArray);
+    _.map(tagZip, (pair) => (Tags.update({ _id: pair[0] }, { $set: { spotId: pair[1] } },
+        (error) => {
+          if (error) {
+            swal('Error', error.message, 'error');
+          }
+        })));
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     let fRef = null;
+
+    const allowedTags = _.pluck(this.props.tags, 'name');
+    const formSchema = new SimpleSchema({
+      image: String,
+      name: String,
+      location: String,
+      description: String,
+      tags: { type: Array, optional: true },
+      'tags.$': { type: String, allowedValues: allowedTags },
+    });
+
     return (
         <Grid container centered>
           <Grid.Row>
-            <Header as="h2" textAlign="center" inverted>Add Spot</Header>
+            <Header as="h2" textAlign="center" inverted>Add Study Spot</Header>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={8}>
+            <Grid.Column width={14}>
               <AutoForm ref={ref => {
                 fRef = ref;
               }} schema={formSchema} onSubmit={data => this.submit(data, fRef)}>
                 <Segment>
-                  <TextField name='name'/>
+                  <TextField name='name' label='Name of Study Spot'/>
                   <p>Upload your image to <a href="https://imgur.com/">Imgur</a> and paste the link here!</p>
-                  <TextField name='image'/>
-                  <TextField name='location'/>
-                  <LongTextField name='description'/>
+                  <TextField name='image' label='Picture of Study Spot'/>
+                  <TextField name='location' label='Location/Address of Study Spot'/>
+                  <LongTextField name='description' label='Describe the Study Spot'/>
+                  <MultiSelectField name='tags' label='Add tags that apply to the Study Spot'/>
                   <SubmitField value='Submit'/>
                   <ErrorsField/>
                 </Segment>
               </AutoForm>
             </Grid.Column>
-            <Grid.Column width={8}>
-              <div className="ui container" style={{ width: '70vw', height: '46vh', margin: '0em' }}>
-                <WrappedMap
-                    googleMapURL={'https://maps.googleapis.com/maps/' +
-                    'api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo'}
-                    loadingElement={<div style={{ height: '100%' }}/>}
-                    containerElement={<div style={{ height: '100%' }}/>}
-                    mapElement={<div style={{ height: '100%' }}/>}
-                />
-              </div>
+            <Grid.Column width={14}>
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -75,13 +86,18 @@ class AddSpots extends React.Component {
   }
 }
 
-function Map() {
-  return <GoogleMap
-      defaultZoom={17}
-      defaultCenter={{ lat: 21.297274, lng: -157.817359 }}
-  />;
-}
+AddSpots.propTypes = {
+  tags: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
+};
 
-const WrappedMap = withScriptjs(withGoogleMap(Map));
-
-export default AddSpots;
+export default withTracker(
+    () => {
+      // Get access to Stuff documents.
+      const subscription = Meteor.subscribe('Tags');
+      return {
+        tags: Tags.find({}).fetch(),
+        ready: (subscription.ready()),
+      };
+    },
+)(AddSpots);

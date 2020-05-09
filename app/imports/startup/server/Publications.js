@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
-import { publishPagination } from 'meteor/kurounin:pagination';
 import { Spots } from '../../api/spot/Spots';
 import { Tags } from '../../api/tag/Tags';
 import { Ratings } from '../../api/rating/Ratings';
+import { Suggestions } from '../../api/suggestion/Suggestions';
 
 /** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('Spots', function publish() {
@@ -26,4 +26,9 @@ Meteor.publish('Ratings', function publish() {
   return this.ready();
 });
 
-publishPagination(Spots);
+Meteor.publish('Suggestions', function publish() {
+  if (this.userId) {
+    return Suggestions.find();
+  }
+  return this.ready();
+});

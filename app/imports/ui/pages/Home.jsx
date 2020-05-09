@@ -42,8 +42,7 @@ class Home extends React.Component {
                       <div className="Home-text">
                         <Header as='h2' inverted>Discover new study spots!</Header>
                         <Header as='h4' inverted>Login to find new study spots all across UH Manoa! You can find the
-                          spots by either going to the Spots page, or taking a look at the Maps page to see all of
-                          UH Manoa.</Header>
+                          spots by going to the Spots page.</Header>
                       </div>
                     </Grid.Column>
                     <Grid.Column>
@@ -56,8 +55,8 @@ class Home extends React.Component {
                       <div className="Home-text">
                         <Header as='h2' inverted>Find a study spot you like? Leave it a good rating.</Header>
                         <Header as='h4' inverted>Each spot will have a rating attached to it. This can tell you what to
-                          expect from the given spot. If you want to be heard as well, feel free to give a spot a
-                          rating.
+                          expect from the given spot. If you try it out yourself,
+                          make sure to give it your own rating too!
                         </Header>
                       </div>
                     </Grid.Column>

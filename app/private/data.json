@@ -284,15 +284,15 @@
   "tags": [
     {
       "name": "Air Conditioned",
-      "spot": ["Post Third Floor (IC SPACE)", "Sinclair First Floor Study Space", "Library Second Floor Study Rooms", "Post First Floor", "Hamilton Library First Floor"]
+      "spot": ["Post Third Floor (IC SPACE)", "Sinclair First Floor Study Space", "Library Second Floor Study Rooms", "Post First Floor", "Hamilton Library First Floor", "Sinclair Second Floor", "Hamilton Library Second Floor", "Sinclair Third Floor", "The Sunset Reference Center", "Library Third Floor", "Starbucks (not on campus)", "Glazer's Coffee", "William S Richardson Law Library", "Center for Korean Studies", "Ban'an", "Campus Center Second Floor Starbucks", "Stan Sheriff Center", "William S. Richardson School of Law", "Pieology", "Paradise Palms", "Music Building", "Manoa Dining Services", "Dunkin' Donus", "Dean Hall"]
     },
     {
       "name": "Indoors",
-      "spot": ["Post Third Floor (IC SPACE)", "Sinclair First Floor Study Space", "Library Second Floor Study Rooms", "Post First Floor"]
+      "spot": ["Post Third Floor (IC SPACE)", "Sinclair First Floor Study Space", "Library Second Floor Study Rooms", "Post First Floor", "Hawaii Institute of Geophysics", "Saunders Hall", "Warrior Recreation Center"]
     },
     {
       "name": "Outdoors",
-      "spot": ["Post Third Floor (IC SPACE)", "Sinclair First Floor Study Space", "Library Second Floor Study Rooms"]
+      "spot": ["Post Third Floor (IC SPACE)", "Sinclair First Floor Study Space", "Library Second Floor Study Rooms", "Japanese Garden", "Sakamaki Hall", "Art Building", "Post Second Floor", "Campus Center Stairwell", "Campus Center Tree", "Shidler College of Business", "Parking Structure", "Keller Hall"]
     },
     {
       "name": "Quiet",
@@ -300,7 +300,7 @@
     },
     {
       "name": "Noisy",
-      "spot": ["Post Third Floor (IC SPACE)"]
+      "spot": ["Post Third Floor (IC SPACE)", "Shidler College of Business", "John F. Kennedy Theatre"]
     },
     {
       "name": "Sunny",
@@ -308,15 +308,15 @@
     },
     {
       "name": "Wi-Fi",
-      "spot": ["Sinclair First Floor Study Space", "Library Second Floor Study Rooms", "Post First Floor", "Hamilton Library First Floor"]
+      "spot": ["Sinclair First Floor Study Space", "Library Second Floor Study Rooms", "Post First Floor", "Hamilton Library First Floor", "Hemenway Hall", "Parking Structure"]
     },
     {
       "name": "Crowded",
-      "spot": ["Library Second Floor Study Rooms", "Post First Floor", "Hamilton Library First Floor"]
+      "spot": ["Library Second Floor Study Rooms", "Post First Floor", "Hamilton Library First Floor", "Campus Center Subway"]
     },
     {
       "name": "Tables",
-      "spot": ["Post First Floor", "Hamilton Library First Floor"]
+      "spot": ["Post First Floor", "Hamilton Library First Floor", "Kuykendal Outside Tables"]
     },
     {
       "name": "Music",
@@ -350,11 +350,6 @@
       "spot": "Post Third Floor (IC SPACE)"
     },
     {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Post Third Floor (IC SPACE)"
-    },
-    {
       "score": 5,
       "owner": "john@foo.com",
       "spot": "Sinclair First Floor Study Space"
@@ -375,11 +370,6 @@
       "spot": "Sinclair First Floor Study Space"
     },
     {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Sinclair First Floor Study Space"
-    },
-    {
       "score": 1,
       "owner": "admin@foo.com",
       "spot": "Library Second Floor Study Rooms"
@@ -395,11 +385,6 @@
       "spot": "Library Second Floor Study Rooms"
     },
     {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Library Second Floor Study Rooms"
-    },
-    {
       "score": 2,
       "owner": "john@foo.com",
       "spot": "Post First Floor"
@@ -407,11 +392,6 @@
     {
       "score": 4,
       "owner": "admin@foo.com",
-      "spot": "Post First Floor"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
       "spot": "Post First Floor"
     },
     {
@@ -420,16 +400,6 @@
       "spot": "Hamilton Library First Floor"
     },
     {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Hamilton Library First Floor"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Sinclair Second Floor"
-    },
-    {
       "score": 2,
       "owner": "john@foo.com",
       "spot": "Hamilton Library Second Floor"
@@ -455,11 +425,6 @@
       "spot": "Hamilton Library Second Floor"
     },
     {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Hamilton Library Second Floor"
-    },
-    {
       "score": 2,
       "owner": "jim@foo.com",
       "spot": "Sinclair Third Floor"
@@ -472,11 +437,6 @@
     {
       "score": 2,
       "owner": "bud@foo.com",
-      "spot": "Sinclair Third Floor"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
       "spot": "Sinclair Third Floor"
     },
     {
@@ -497,11 +457,6 @@
     {
       "score": 5,
       "owner": "admin@foo.com",
-      "spot": "The Sunset Reference Center"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
       "spot": "The Sunset Reference Center"
     },
     {
@@ -525,11 +480,6 @@
       "spot": "Library Third Floor"
     },
     {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Library Third Floor"
-    },
-    {
       "score": 4,
       "owner": "bud@foo.com",
       "spot": "Starbucks (not on campus)"
@@ -540,23 +490,8 @@
       "spot": "Starbucks (not on campus)"
     },
     {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Starbucks (not on campus)"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Japanese Garden"
-    },
-    {
       "score": 5,
       "owner": "admin@foo.com",
-      "spot": "Glazer's Coffee"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
       "spot": "Glazer's Coffee"
     },
     {
@@ -565,11 +500,6 @@
       "spot": "Sakamaki Hall"
     },
     {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Sakamaki Hall"
-    },
-    {
       "score": 3,
       "owner": "jim@foo.com",
       "spot": "Post Second Floor"
@@ -583,66 +513,6 @@
       "score": 3,
       "owner": "bud@foo.com",
       "spot": "Post Second Floor"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "William S Richardson Law Library"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Center for Korean Studies"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Ban'an"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Art Building"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Campus Center Second Floor Starbucks"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Post Second Floor"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Stan Sheriff Center"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "William S. Richardson School of Law"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Pieology"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Paradise Palms"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Music Building"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Manoa Dining Services"
     },
     {
       "score": 4,
@@ -665,26 +535,6 @@
       "spot": "Dunkin' Donuts"
     },
     {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Hawaii Institute of Geophysics"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Saunders Hall"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Hemenway Hall"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Dean Hall"
-    },
-    {
       "score": 1,
       "owner": "jim@foo.com",
       "spot": "Campus Center Stairwell"
@@ -695,44 +545,9 @@
       "spot": "Campus Center Stairwell"
     },
     {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Campus Center Stairwell"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Campus Center Tree"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Shidler College of Business"
-    },
-    {
       "score": 1,
       "owner": "sam@foo.com",
       "spot": "Parking Structure"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Parking Structure"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "John F. Kennedy Theatre"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Campus Center Subway"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Kuykendal Outside Tables"
     },
     {
       "score": 2,
@@ -758,16 +573,6 @@
       "score": 1,
       "owner": "bud@foo.com",
       "spot": "Keller Hall"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Keller Hall"
-    },
-    {
-      "score": 0,
-      "owner": "default@foo.com",
-      "spot": "Warrior Recreation Center"
     }
   ]
 }

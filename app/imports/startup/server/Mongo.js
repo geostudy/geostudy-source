@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { _ } from 'meteor/underscore';
 import { Spots } from '../../api/spot/Spots.js';
 import { Tags } from '../../api/tag/Tags.js';
 import { Ratings } from '../../api/rating/Ratings.js';
@@ -12,13 +13,16 @@ function addSpots({ image, name, location, description, owner }) {
 }
 
 function addTags({ name, spot }) {
+  const spotId = _.pluck(_.flatten(_.map(spot,
+      (tag) => Spots.find({ name: tag }).fetch()), true), '_id');
   console.log(`  Adding: ${name}`);
-  Tags.insert({ name, spot });
+  Tags.insert({ name, spotId });
 }
 
 function addRatings({ score, owner, spot }) {
+  const spotId = _.reduce(_.pluck(Spots.find({ name: spot }).fetch(), '_id'), (memo, num) => memo + num);
   console.log(`  Adding: ${spot} (${score})`);
-  Ratings.insert({ score, owner, spot });
+  Ratings.insert({ score, owner, spotId });
 }
 
 /** Initialize the collection if empty. */

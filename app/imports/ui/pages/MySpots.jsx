@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Icon, Item, Header, Loader, Container, Pagination, Radio, Segment, Checkbox } from 'semantic-ui-react';
+import { Icon, Item, Header, Loader, Container, Pagination } from 'semantic-ui-react';
 import Spot from '/imports/ui/components/Spot';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -9,23 +9,18 @@ import { Ratings } from '../../api/rating/Ratings';
 import { Tags } from '../../api/tag/Tags';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class ListSpots extends React.Component {
+class MySpots extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       activePage: 1,
     };
-    this.sortState = { value: '' };
   }
 
   handleChange = (e, data) => {
     this.setState({ activePage: data.activePage });
   };
-
-  handleSortChange(event) {
-    this.setState({ value: event.value });
-  }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -34,11 +29,13 @@ class ListSpots extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
+    const ownedSpots = Spots.find({ owner: Meteor.user().username }).fetch();
+
     return (
         <Container>
-          <Header as="h2" textAlign="center" inverted>View Study Spots</Header>
+          <Header as="h2" textAlign="center" inverted>View Your Study Spots</Header>
           <Item.Group divided>
-            {this.props.spots.slice((this.state.activePage - 1) * 5,
+            {ownedSpots.slice((this.state.activePage - 1) * 5,
                 this.state.activePage * 5).map((spot, index) => <Spot key={index} Spots={Spots} spot={spot}
                 Tags={Tags} tags={this.props.tags} Ratings={Ratings} rating={this.props.ratings}/>)}
           </Item.Group>
@@ -51,7 +48,7 @@ class ListSpots extends React.Component {
                 lastItem={{ content: <Icon name='angle double right'/>, icon: true }}
                 prevItem={{ content: <Icon name='angle left'/>, icon: true }}
                 nextItem={{ content: <Icon name='angle right'/>, icon: true }}
-                totalPages={Math.ceil(this.props.spots.length / 5)}
+                totalPages={Math.ceil(ownedSpots.length / 5)}
                 onPageChange={this.handleChange}
             />
           </Container>
@@ -61,8 +58,7 @@ class ListSpots extends React.Component {
 }
 
 /** Require an array of Stuff documents in the props. */
-ListSpots
-    .propTypes = {
+MySpots.propTypes = {
   spots: PropTypes.array.isRequired,
   ratings: PropTypes.array.isRequired,
   tags: PropTypes.array.isRequired,
@@ -83,4 +79,4 @@ export default withTracker(
         ready: (subscription.ready() && subscription2.ready() && subscription3.ready()),
       };
     },
-)(ListSpots);
+)(MySpots);

@@ -1,31 +1,25 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Icon, Item, Header, Loader, Container, Pagination, Radio, Segment, Checkbox } from 'semantic-ui-react';
-import Spot from '/imports/ui/components/Spot';
+import { Icon, Item, Header, Loader, Container, Pagination } from 'semantic-ui-react';
+import Suggestion from '/imports/ui/components/Suggestion';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Spots } from '../../api/spot/Spots';
-import { Ratings } from '../../api/rating/Ratings';
+import { Suggestions } from '../../api/suggestion/Suggestions';
 import { Tags } from '../../api/tag/Tags';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class ListSpots extends React.Component {
+class TagsAdmin extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       activePage: 1,
     };
-    this.sortState = { value: '' };
   }
 
   handleChange = (e, data) => {
     this.setState({ activePage: data.activePage });
   };
-
-  handleSortChange(event) {
-    this.setState({ value: event.value });
-  }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -36,11 +30,12 @@ class ListSpots extends React.Component {
   renderPage() {
     return (
         <Container>
-          <Header as="h2" textAlign="center" inverted>View Study Spots</Header>
-          <Item.Group divided>
-            {this.props.spots.slice((this.state.activePage - 1) * 5,
-                this.state.activePage * 5).map((spot, index) => <Spot key={index} Spots={Spots} spot={spot}
-                Tags={Tags} tags={this.props.tags} Ratings={Ratings} rating={this.props.ratings}/>)}
+          <Header as="h2" textAlign="center" inverted>Administrator Tags</Header>
+          <Item.Group>
+            {this.props.suggestions.slice((this.state.activePage - 1) * 5,
+                this.state.activePage * 5).map((suggestion, index) => <Suggestion
+                key={index} Suggestions={Suggestions} suggestion={suggestion}
+                Tags={Tags} tag={this.props.tags}/>)}
           </Item.Group>
           <hr/>
           <Container textAlign={'center'}>
@@ -51,7 +46,7 @@ class ListSpots extends React.Component {
                 lastItem={{ content: <Icon name='angle double right'/>, icon: true }}
                 prevItem={{ content: <Icon name='angle left'/>, icon: true }}
                 nextItem={{ content: <Icon name='angle right'/>, icon: true }}
-                totalPages={Math.ceil(this.props.spots.length / 5)}
+                totalPages={Math.ceil(this.props.suggestions.length / 5)}
                 onPageChange={this.handleChange}
             />
           </Container>
@@ -61,11 +56,9 @@ class ListSpots extends React.Component {
 }
 
 /** Require an array of Stuff documents in the props. */
-ListSpots
-    .propTypes = {
-  spots: PropTypes.array.isRequired,
-  ratings: PropTypes.array.isRequired,
+TagsAdmin.propTypes = {
   tags: PropTypes.array.isRequired,
+  suggestions: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -73,14 +66,12 @@ ListSpots
 export default withTracker(
     () => {
       // Get access to Stuff documents.
-      const subscription = Meteor.subscribe('Spots');
-      const subscription2 = Meteor.subscribe('Ratings');
-      const subscription3 = Meteor.subscribe('Tags');
+      const subscription = Meteor.subscribe('Suggestions');
+      const subscription2 = Meteor.subscribe('Tags');
       return {
-        spots: Spots.find({}).fetch(),
-        ratings: Ratings.find({}).fetch(),
+        suggestions: Suggestions.find({}).fetch(),
         tags: Tags.find({}).fetch(),
-        ready: (subscription.ready() && subscription2.ready() && subscription3.ready()),
+        ready: (subscription.ready() && subscription2.ready()),
       };
     },
-)(ListSpots);
+)(TagsAdmin);

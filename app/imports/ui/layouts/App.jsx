@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import 'semantic-ui-css/semantic.css';
@@ -14,8 +14,10 @@ import Home from '../pages/Home';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
-import Map from '../pages/Map';
+import MySpots from '../pages/MySpots';
 import ListSpots from '../pages/ListSpots';
+import SuggestTags from '../pages/SuggestTags';
+import TagsAdmin from '../pages/TagsAdmin';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -30,13 +32,14 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
-              <Route path="/map" component={Map}/>
+              <ProtectedRoute path="/mine" component={MySpots}/>
               <ProtectedRoute path="/home" component={Home}/>
               <ProtectedRoute path="/spots" component={ListSpots}/>
               <ProtectedRoute path="/add" component={AddSpots}/>
-              <ProtectedRoute path="/edit" component={EditSpot}/>
               <ProtectedRoute path="/edit/:_id" component={EditSpot}/>
               <ProtectedRoute path="/signout" component={Signout}/>
+              <ProtectedRoute path="/suggestion" component={SuggestTags}/>
+              <AdminProtectedRoute path="/admin" component={TagsAdmin}/>
               <Route component={NotFound}/>
             </Switch>
             <Footer/>
