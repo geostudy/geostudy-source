@@ -19,27 +19,31 @@ class AddSpots extends React.Component {
   submit(data, formRef) {
     const { name, image, location, description, tags } = data;
     const owner = Meteor.user().username;
-    Spots.insert({ image, name, location, description, owner },
-        (error) => {
-          if (error) {
-            swal('Error', error.message, 'error');
-          } else {
-            swal('Success', 'Item added successfully', 'success');
-            formRef.reset();
-          }
-        });
-    const tagId = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags, { name: tag }))), true), '_id');
-    const tagArray = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags,
-        { name: tag }))), true), 'spotId');
-    _.map(tagArray, (array) => array.push(_.reduce(_.pluck(Spots.find({ name: name }).fetch(),
-        '_id'), (memo, num) => (memo + num))));
-    const tagZip = _.zip(tagId, tagArray);
-    _.map(tagZip, (pair) => (Tags.update({ _id: pair[0] }, { $set: { spotId: pair[1] } },
-        (error) => {
-          if (error) {
-            swal('Error', error.message, 'error');
-          }
-        })));
+    if (_.contains(_.pluck(this.props.spot, 'name'), name === false)) {
+      Spots.insert({ image, name, location, description, owner },
+          (error) => {
+            if (error) {
+              swal('Error', error.message, 'error');
+            } else {
+              swal('Success', 'Item added successfully', 'success');
+              formRef.reset();
+            }
+          });
+      const tagId = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags, { name: tag }))), true), '_id');
+      const tagArray = _.pluck(_.flatten(_.map(tags, (tag) => (_.where(this.props.tags,
+          { name: tag }))), true), 'spotId');
+      _.map(tagArray, (array) => array.push(_.reduce(_.pluck(Spots.find({ name: name }).fetch(),
+          '_id'), (memo, num) => (memo + num))));
+      const tagZip = _.zip(tagId, tagArray);
+      _.map(tagZip, (pair) => (Tags.update({ _id: pair[0] }, { $set: { spotId: pair[1] } },
+          (error) => {
+            if (error) {
+              swal('Error', error.message, 'error');
+            }
+          })));
+    } else {
+      swal('Error', 'This Study Spot name is already in use', 'error');
+    }
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
@@ -88,6 +92,7 @@ class AddSpots extends React.Component {
 
 AddSpots.propTypes = {
   tags: PropTypes.array.isRequired,
+  spot: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -95,9 +100,11 @@ export default withTracker(
     () => {
       // Get access to Stuff documents.
       const subscription = Meteor.subscribe('Tags');
+      const subscription2 = Meteor.subscribe('Spots');
       return {
         tags: Tags.find({}).fetch(),
-        ready: (subscription.ready()),
+        spot: Spots.find({}).fetch(),
+        ready: (subscription.ready() || subscription2.ready()),
       };
     },
 )(AddSpots);
