@@ -17,7 +17,7 @@ import Signout from '../pages/Signout';
 import MySpots from '../pages/MySpots';
 import ListSpots from '../pages/ListSpots';
 import SuggestTags from '../pages/SuggestTags';
-import TagsAdmin from '../pages/TagsAdmin';
+import TagsAdmin from '../pages/AdminControl';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {

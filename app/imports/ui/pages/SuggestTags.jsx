@@ -15,9 +15,10 @@ class SuggestTags extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
+    const owner = Meteor.user().username;
     const tagCheck = _.pluck(this.props.tags, 'name');
     const suggestionCheck = _.pluck(this.props.suggestions, 'name');
-    const { name, description, owner } = data;
+    const { name, description } = data;
     if (_.contains(tagCheck, name)) {
       swal('Error', `${name} already exists as a tag.`, 'error');
     } else if (_.contains(suggestionCheck, name)) {
@@ -61,7 +62,6 @@ class SuggestTags extends React.Component {
                 <Segment>
                   <TextField name='name' label='Name of the new tag'/>
                   <LongTextField name='description' label='Please describe why we should add this as a tag'/>
-                  <HiddenField name='owner' value={Meteor.user().username}/>
                   <SubmitField value='Submit'/>
                   <ErrorsField/>
                 </Segment>
