@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Grid, Segment, Header } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom';
 import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import { _ } from 'meteor/underscore';
@@ -15,6 +16,11 @@ import { Tags } from '../../api/tag/Tags';
 /** Renders the Page for adding a document. */
 class AddSpots extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = { redirect: false };
+  }
+
   /** On submit, insert the data. */
   submit(data, formRef) {
     const { name, image, location, description, tags } = data;
@@ -25,7 +31,7 @@ class AddSpots extends React.Component {
             if (error) {
               swal('Error', error.message, 'error');
             } else {
-              swal('Success', 'Item added successfully', 'success');
+              swal('Success', 'Study Spot added successfully', 'success');
               formRef.reset();
             }
           });
@@ -41,6 +47,7 @@ class AddSpots extends React.Component {
               swal('Error', error.message, 'error');
             }
           })));
+      this.setState({ redirect: true });
     } else {
       swal('Error', 'This Study Spot name is already in use', 'error');
     }
@@ -48,8 +55,10 @@ class AddSpots extends React.Component {
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
+    if (this.state.redirect) {
+      return <Redirect to='/spots'/>;
+    }
     let fRef = null;
-
     const allowedTags = _.pluck(this.props.tags, 'name');
     const formSchema = new SimpleSchema({
       image: String,

@@ -2,29 +2,23 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Icon, Item, Header, Loader, Container, Pagination } from 'semantic-ui-react';
 import Suggestion from '/imports/ui/components/Suggestion';
-import AdminTags from '/imports/ui/components/AdminTags';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Suggestions } from '../../api/suggestion/Suggestions';
 import { Tags } from '../../api/tag/Tags';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class AdminControl extends React.Component {
+class AdminSuggestion extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       activePage: 1,
-      activeSecondPage: 1,
     };
   }
 
   handleChange = (e, data) => {
     this.setState({ activePage: data.activePage });
-  };
-
-  handleSecondChange = (e, data) => {
-    this.setState({ activeSecondPage: data.activeSecondPage });
   };
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -36,8 +30,7 @@ class AdminControl extends React.Component {
   renderPage() {
     return (
         <Container>
-          <Header as="h2" textAlign="center" inverted>Administrator Control</Header>
-          <Header as="h3" textAlign="center" inverted>Administrator Tags</Header>
+          <Header as="h2" textAlign="center" inverted>Administrator Suggestions</Header>
           <Item.Group>
             {this.props.suggestions.slice((this.state.activePage - 1) * 5,
                 this.state.activePage * 5).map((suggestion, index) => <Suggestion
@@ -57,31 +50,13 @@ class AdminControl extends React.Component {
                 onPageChange={this.handleChange}
             />
           </Container>
-          <Header as="h3" textAlign="center" inverted>Administrator Tags</Header>
-          <Item.Group>
-            {this.props.tags.slice((this.state.activeSecondPage - 1) * 5,
-                this.state.activeSecondPage * 5).map((tags, index) => <AdminTags
-                key={index} Tags={Tags} tag={tags}/>)}
-          </Item.Group>
-          <Container textAlign={'center'}>
-            <Pagination
-                defaultActivePage={1}
-                ellipsisItem={{ content: <Icon name='ellipsis horizontal'/>, icon: true }}
-                firstItem={{ content: <Icon name='angle double left'/>, icon: true }}
-                lastItem={{ content: <Icon name='angle double right'/>, icon: true }}
-                prevItem={{ content: <Icon name='angle left'/>, icon: true }}
-                nextItem={{ content: <Icon name='angle right'/>, icon: true }}
-                totalPages={Math.ceil(this.props.suggestions.length / 5)}
-                onPageChange={this.handleSecondChange}
-            />
-          </Container>
         </Container>
     );
   }
 }
 
 /** Require an array of Stuff documents in the props. */
-AdminControl.propTypes = {
+AdminSuggestion.propTypes = {
   tags: PropTypes.array.isRequired,
   suggestions: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
@@ -99,4 +74,4 @@ export default withTracker(
         ready: (subscription.ready() && subscription2.ready()),
       };
     },
-)(AdminControl);
+)(AdminSuggestion);

@@ -17,7 +17,9 @@ import Signout from '../pages/Signout';
 import MySpots from '../pages/MySpots';
 import ListSpots from '../pages/ListSpots';
 import SuggestTags from '../pages/SuggestTags';
-import TagsAdmin from '../pages/AdminControl';
+import AdminSuggestion from '../pages/AdminSuggestion';
+import AdminTags from '../pages/AdminTagsPage';
+import AdminUsers from '../pages/AdminUsers';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -39,7 +41,9 @@ class App extends React.Component {
               <ProtectedRoute path="/edit/:_id" component={EditSpot}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <ProtectedRoute path="/suggestion" component={SuggestTags}/>
-              <AdminProtectedRoute path="/admin" component={TagsAdmin}/>
+              <AdminProtectedRoute path="/adminsuggestion" component={AdminSuggestion}/>
+              <AdminProtectedRoute path="/admintags" component={AdminTags}/>
+              <AdminProtectedRoute path="/adminusers" component={AdminUsers}/>
               <Route component={NotFound}/>
             </Switch>
             <Footer/>

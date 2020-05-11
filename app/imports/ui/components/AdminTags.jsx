@@ -10,6 +10,11 @@ import { Tags } from '../../api/tag/Tags';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class AdminTags extends React.Component {
+
+  handleInputChange = e => {
+    this.setState({ value: e.target.value });
+  };
+
   render() {
     return (
         <Item>
@@ -23,15 +28,13 @@ class AdminTags extends React.Component {
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
                 <Item.Extra>
 
-                  <Input className="ui button"
-                          action={{
-                            content: 'Checkout',
-                          }}
-                         actionposition='right'
-                         placeholder='Type new tag name...'
+                  <Input placeholder='Type new tag name...' onChange={this.handleInputChange}
+                    action={{ content: 'Edit Tag', onClick: () => this.updateTag(this.props.tag._id) }}
                   />
                   <Button className="ui button"
-                          onClick={() => this.deleteTag(this.props.tag._id)}>Delete Tag</Button>
+                          onClick={() => this.deleteTag(this.props.tag._id)}>
+                    Delete Tag
+                  </Button>
                 </Item.Extra>
             ) : ''}
             <Divider inverted/>
@@ -40,15 +43,13 @@ class AdminTags extends React.Component {
     );
   }
 
-  addSuggestion(tagId, tagName) {
-    const name = _.reduce(tagName, (memo, num) => (memo + num));
-    const testArray = [];
-    Tags.insert({ name, testArray },
+  updateTag(tagId) {
+    Tags.update({ _id: tagId }, { $set: { name: this.state.value } },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
           } else {
-            swal('Success', 'Suggestion added successfully', 'success');
+            swal('Success', 'Tag updated successfully', 'success');
           }
         });
   }
