@@ -6,28 +6,7 @@
       "role": "admin"
     },
     {
-      "email": "admintoo@foo.com",
-      "password": "changeme",
-      "role": "admin"
-    },
-    {
       "email": "john@foo.com",
-      "password": "changeme"
-    },
-    {
-      "email": "jim@foo.com",
-      "password": "changeme"
-    },
-    {
-      "email": "sam@foo.com",
-      "password": "changeme"
-    },
-    {
-      "email": "bud@foo.com",
-      "password": "changeme"
-    },
-    {
-      "email": "default@foo.com",
       "password": "changeme"
     }
   ],
