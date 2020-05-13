@@ -1,14 +1,12 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Icon, Item, Header, Loader, Container, Pagination } from 'semantic-ui-react';
-import Suggestion from '/imports/ui/components/Suggestion';
+import User from '/imports/ui/components/User';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Suggestions } from '../../api/suggestion/Suggestions';
-import { Tags } from '../../api/tag/Tags';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class TagsAdmin extends React.Component {
+class AdminUsers extends React.Component {
 
   constructor(props) {
     super(props);
@@ -30,12 +28,11 @@ class TagsAdmin extends React.Component {
   renderPage() {
     return (
         <Container>
-          <Header as="h2" textAlign="center" inverted>Administrator Tags</Header>
+          <Header as="h2" textAlign="center" inverted>Administrator Users</Header>
           <Item.Group>
-            {this.props.suggestions.slice((this.state.activePage - 1) * 5,
-                this.state.activePage * 5).map((suggestion, index) => <Suggestion
-                key={index} Suggestions={Suggestions} suggestion={suggestion}
-                Tags={Tags} tag={this.props.tags}/>)}
+            {this.props.users.slice((this.state.activePage - 1) * 5,
+                this.state.activePage * 5).map((user, index) => <User
+                key={index} user={user}/>)}
           </Item.Group>
           <hr/>
           <Container textAlign={'center'}>
@@ -46,7 +43,7 @@ class TagsAdmin extends React.Component {
                 lastItem={{ content: <Icon name='angle double right'/>, icon: true }}
                 prevItem={{ content: <Icon name='angle left'/>, icon: true }}
                 nextItem={{ content: <Icon name='angle right'/>, icon: true }}
-                totalPages={Math.ceil(this.props.suggestions.length / 5)}
+                totalPages={Math.ceil(this.props.users.length / 5)}
                 onPageChange={this.handleChange}
             />
           </Container>
@@ -56,9 +53,8 @@ class TagsAdmin extends React.Component {
 }
 
 /** Require an array of Stuff documents in the props. */
-TagsAdmin.propTypes = {
-  tags: PropTypes.array.isRequired,
-  suggestions: PropTypes.array.isRequired,
+AdminUsers.propTypes = {
+  users: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -66,12 +62,10 @@ TagsAdmin.propTypes = {
 export default withTracker(
     () => {
       // Get access to Stuff documents.
-      const subscription = Meteor.subscribe('Suggestions');
-      const subscription2 = Meteor.subscribe('Tags');
+      const subscription = Meteor.subscribe('Users');
       return {
-        suggestions: Suggestions.find({}).fetch(),
-        tags: Tags.find({}).fetch(),
-        ready: (subscription.ready() && subscription2.ready()),
+        users: Meteor.users.find({}).fetch(),
+        ready: (subscription.ready()),
       };
     },
-)(TagsAdmin);
+)(AdminUsers);

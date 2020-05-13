@@ -4,6 +4,7 @@ import { Grid, Segment, Header } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import swal from 'sweetalert';
+import { Redirect } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -14,6 +15,11 @@ import MultiSelectField from '../forms/controllers/MultiSelectField';
 
 /** Renders the Page for adding a document. */
 class EditSpot extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { redirect: false };
+  }
 
   /** On submit, insert the data. */
   submit(data) {
@@ -27,7 +33,7 @@ class EditSpot extends React.Component {
             if (error) {
               swal('Error', error.message, 'error');
             } else {
-              swal('Success', 'Item updated successfully', 'success');
+              swal('Success', 'Study Spot updated successfully', 'success');
             }
           });
       if (_.isEqual(tags, this.props.doc.tags) === false) {
@@ -62,6 +68,7 @@ class EditSpot extends React.Component {
               })));
         }
       }
+      this.setState({ redirect: true });
     } else {
       swal('Error', 'This Study Spot name is already in use', 'error');
     }
@@ -69,6 +76,9 @@ class EditSpot extends React.Component {
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
+    if (this.state.redirect) {
+      return <Redirect to='/spots'/>;
+        }
     const allowedTags = _.pluck(this.props.tags, 'name');
     const tagSpot = _.filter(this.props.tags, (tag) => (_.contains(tag.spotId, this.props.doc._id)));
     const tagName = _.pluck(tagSpot, 'name');

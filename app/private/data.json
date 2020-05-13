@@ -1,4 +1,22 @@
 {
+  "users": [
+    {
+      "email": "jim@foo.com",
+      "password": "changeme"
+    },
+    {
+      "email": "sam@foo.com",
+      "password": "changeme"
+    },
+    {
+      "email": "bud@foo.com",
+      "password": "changeme"
+    },
+    {
+      "email": "default@foo.com",
+      "password": "changeme"
+    }
+  ],
   "spots": [
       {
         "image": "https://www.staradvertiser.com/wp-content/uploads/2017/01/web1_CTY-UH-Explosion-Report-084.jpg",

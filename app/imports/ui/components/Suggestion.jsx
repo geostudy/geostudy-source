@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Item } from 'semantic-ui-react';
+import { Button, Divider, Item } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
@@ -14,6 +14,7 @@ class Suggestion extends React.Component {
     return (
         <Item>
           <Item.Content>
+            <Divider inverted/>
             <Item.Header as='h3'><p className='spots-text'> {this.props.suggestion.name}
             </p></Item.Header>
             <Item.Meta><p className='spots-subtext'>Suggested by: &nbsp; {this.props.suggestion.owner}</p></Item.Meta>
@@ -31,6 +32,7 @@ class Suggestion extends React.Component {
                           onClick={() => this.rejectSuggestion(this.props.suggestion._id)}>Reject</Button>
                 </Item.Extra>
             ) : ''}
+            <Divider inverted/>
           </Item.Content>
         </Item>
     );

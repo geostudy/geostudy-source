@@ -24,4 +24,10 @@ if (Meteor.users.find().count() === 0) {
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
+  if (Meteor.settings.loadAssetsFile) {
+      const assetsFileName = 'data.json';
+      console.log(`Loading users from private/${assetsFileName}`);
+      const jsonData = JSON.parse(Assets.getText(assetsFileName));
+      jsonData.users.map(({ email, password, role }) => createUser(email, password, role));
+  }
 }

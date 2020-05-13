@@ -9,7 +9,6 @@ const Suggestions = new Mongo.Collection('Suggestions');
 const SuggestionsSchema = new SimpleSchema({
   name: String,
   description: String,
-  owner: String,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */
