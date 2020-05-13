@@ -44,14 +44,19 @@ class AdminTags extends React.Component {
   }
 
   updateTag(tagId) {
-    Tags.update({ _id: tagId }, { $set: { name: this.state.value } },
-        (error) => {
-          if (error) {
-            swal('Error', error.message, 'error');
-          } else {
-            swal('Success', 'Tag updated successfully', 'success');
-          }
-        });
+    if (_.contains(_.pluck(Tags.find().fetch(), 'name'), this.state.value) === false) {
+      Tags.update({ _id: tagId }, { $set: { name: this.state.value } },
+          (error) => {
+            if (error) {
+              swal('Error', error.message, 'error');
+            } else {
+              swal('Success', 'Tag updated successfully', 'success');
+            }
+          });
+    } else {
+      swal('Error',
+          'Cannot update tag name. Either it is the current name or the tag name is already in use.', 'error');
+    }
   }
 
   deleteTag(tagId) {

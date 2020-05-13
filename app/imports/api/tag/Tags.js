@@ -11,7 +11,7 @@ const TagsSchema = new SimpleSchema({
   spotId: {
     type: Array,
     optional: true,
-    defaultValue: ['test'],
+    defaultValue: [],
   },
   'spotId.$': { type: String },
 }, { tracker: Tracker });
