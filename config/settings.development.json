@@ -10,5 +10,5 @@
       "password": "changeme"
     }
   ],
-  "loadAssetsFile": true
+  "loadAssetsFile": false
 }
